@@ -3,4 +3,42 @@ CMPT214-01 - T11 (Fridays 9-10:20)
 
 Lab 1 - Basic Lab Literacy and Introduction to UNIX/LINUX
 
+------------------------------------------------------------------------------
+
+8.
+tck290@tux7:~> date
+Tue Sep 11 15:43:29 CST 2018
+tck290@tux7:~> hostname
+tux7
+tck290@tux7:~> uptime
+ 15:43:37 up 5 days, 22:37, 38 users,  load average: 0.11, 0.30, 0.32
+tck290@tux7:~> id
+uid=12971826(tck290) gid=4000(student) groups=4000(student)
+tck290@tux7:~> exit
+logout
+Connection to tuxworld.usask.ca closed.
+
+------------------------------------------------------------------------------
+
+9.
+tck290@tux7:~> vi 214test.txt
+
+tck290@tux7:~> ls 214test.txt 
+214test.txt
+tck290@tux7:~> cat 214test.txt 
+Hello
+My Name is Tyrel
+Linux is ezpz
+Lemon Squeezy
+Thank God I can access tuxworld from home
+tck290@tux7:~> mv 214test.txt test214.txt
+tck290@tux7:~> cp test214.txt test214_copy.txt 
+tck290@tux7:~> rm test214.txt test214_copy.txt 
+rm: remove regular file 'test214.txt'? y
+rm: remove regular file 'test214_copy.txt'? y
+tck290@tux7:~> ls
+Desktop/    Downloads/	Pictures/  Templates/
+Documents/  Music/	Public/    Videos/
+
+------------------------------------------------------------------------------
 
