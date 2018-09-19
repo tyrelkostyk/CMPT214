@@ -1,0 +1,15 @@
+Tyrel Kostyk, tck290, 11216033
+CMPT214 - Lab 2
+
+-------------------------------------
+NOTE: Operating from my Linux machine, SSH'd into the tuxworld server
+
+1a)
+tck290@tux6:~> mkdir 214bin
+tck290@tux6:~> mkdir 214lab2
+b) -> Used SCP to send 'ls' file to tuxworld server
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214 $ scp ls tck290@tuxworld.usask.ca:
+tck290@tuxworld.usask.ca's password: 
+ls                                                                                                                                    100%   48     0.1KB/s   00:00    
+tck290@tux6:~> mv ls 214bin/
+
