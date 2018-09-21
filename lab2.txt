@@ -7,9 +7,138 @@ NOTE: Operating from my Linux machine, SSH'd into the tuxworld server
 1a)
 tck290@tux6:~> mkdir 214bin
 tck290@tux6:~> mkdir 214lab2
-b) -> Used SCP to send 'ls' file to tuxworld server
-tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214 $ scp ls tck290@tuxworld.usask.ca:
-tck290@tuxworld.usask.ca's password: 
-ls                                                                                                                                    100%   48     0.1KB/s   00:00    
-tck290@tux6:~> mv ls 214bin/
+b)   #### NOTE #### Used SCP to put "ls" file on tuxworld server from local machine,
+                    and as a result I needed to give it "read" permissions
+tck290@tux6:~/214bin> chmod u+rw ls    
+tck290@tux6:~/214bin> ./ls
+This is not the real ls! 
+c)
+tck290@tux7:~/214bin> cd ../214lab2/
+d)
+tck290@tux7:~/214lab2> ls ~
+214bin/   Desktop/    Downloads/  Pictures/  Templates/
+214lab2/  Documents/  Music/	  Public/    Videos/
+e)
+tck290@tux6:~> PATH=~/214bin/:$PATH
+tck290@tux6:~> echo $PATH
+/student/tck290/214bin/:/bin:/usr/bin:/usr/local/bin:/student/binfo/bin:.
+f)
+tck290@tux6:~> ls ~
+This is not the real ls! 
+g)
+tck290@tux6:~> which ls
+alias ls='ls -FC'
+	~/214bin/ls
+h)
+tck290@tux6:~/214bin> more ls
+#!/bin/sh
+
+printf "This is not the real ls! \n"
+
+###
+
+2a)
+tck290@tux6:~> tcsh
+tck290@tux6:/student/tck290> exit
+exit
+b)
+    i)
+    tck290@tux6:~> echo "You are performing the commands in tcshrc"
+    You are performing the commands in tcsh
+    iii)
+    tck290@tux6:~> more .tcshrc 
+    echo "You are performing the commands in tcshrc"
+    iv)
+    tck290@tux6:~> tcsh
+    You are performing the commands in tcshrc
+    v)
+    [tck290@tux6 ~]$ exit
+    exit
+c)
+tck290@tux6:~> rm .tcshrc 
+rm: remove regular file '.tcshrc'? y
+
+###
+
+3a)
+tck290@tux6:~> man -k editor > editor.txt
+tck290@tux6:~> more editor.txt 
+audacity (1)         - Graphical cross-platform audio editor
+cinnamon-menu-editor (1) - Editor for the panel menu
+dconf-editor (1)     - Graphical editor for gsettings and dconf
+dotty (1)            - A Customizable Graph Editor
+ed (1)               - line-oriented text editor
+editorconfig-format (5) - EditorConfig File Format
+editorconfig.h (3)   - Header file of EditorConfig.
+editorconfig_handle.h (3) - Header file of EditorConfig handle.
+emacs (1)            - GNU project Emacs editor
+ex (1)               - Vi IMproved, a programmer's text editor
+ex (1p)              - text editor
+gedit (1)            - text editor for the GNOME Desktop
+gex (1)              - Vi IMproved, a programmer's text editor
+gobby (1)            - a collaborative text editor
+gparted (8)          - GNOME Partition Editor for manipulating disk partitions.
+gview (1)            - Vi IMproved, a programmer's text editor
+gvim (1)             - Vi IMproved, a programmer's text editor
+i3-sensible-editor (1) - launches $EDITOR with fallbacks
+jed (1)              - programmers editor
+jfs_debugfs (8)      - shell-type JFS file system editor
+jmacs (1)            - Joe's Own Editor
+joe (1)              - Joe's Own Editor
+jpico (1)            - Joe's Own Editor
+jstar (1)            - Joe's Own Editor
+kate (1)             - Advanced text editor by KDE
+lefty (1)            - A Programmable Graphics Editor
+lneato (1)           - A Customizable Graph Editor
+mozo (1)             - MATE Menu Editor
+nano (1)             - Nano's ANOther editor, an enhanced free Pico clone
+nedit (1x)           - Text Editor
+nedit-client (1x)    - Client program for NEdit text editor
+nm-connection-editor (1) - network connection editor for NetworkManager
+pico (1)             - simple text editor in the style of the Alpine Composer
+pitivi (1)           - Non-linear video editor
+pluma (1)            - The MATE Text Editor
+poedit (1)           - gettext catalogs editor
+red (1)              - line-oriented text editor
+rjoe (1)             - Joe's Own Editor
+rvi (1)              - Vi IMproved, a programmer's text editor
+rview (1)            - Vi IMproved, a programmer's text editor
+rvim (1)             - Vi IMproved, a programmer's text editor
+sed (1)              - stream editor for filtering and transforming text
+sed (1p)             - stream editor
+tc-pedit (8)         - generic packet editor action
+tc-skbmod (8)        - user-friendly packet editor action
+ts-edit (1)          - tsin vocabulary database editor for gcin
+vi (1)               - Vi IMproved, a programmer's text editor
+vi (1p)              - screen-oriented (visual) display editor
+view (1)             - Vi IMproved, a programmer's text editor
+vim (1)              - Vi IMproved, a programmer's text editor
+vimdot (1)           - Combined text editor and dot viewer
+vimrc (5)            - Vi IMproved, a programmer's text editor
+vimx (1)             - Vi IMproved, a programmer's text editor
+virc (5)             - Vi IMproved, a programmer's text editor
+xed (1)              - The Text Editor
+xmlcopyeditor (1)    - fast, free, validating XML editor
+
+b)
+tck290@tux6:~> set -o noclobber
+tck290@tux6:~> man -k editor > editor.txt
+-bash: editor.txt: cannot overwrite existing file
+
+###
+
+4)
+tck290@tux6:~> bash --version
+GNU bash, version 4.4.23(1)-release (x86_64-redhat-linux-gnu)
+Copyright (C) 2016 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+
+This is free software; you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+
+
+
+
 
