@@ -1,0 +1,260 @@
+CMPT214 LAB 3 - Due Sunday, Sept 30th 11:55pm
+Tyrel Kostyk - TCK290 - 11216033
+
+################################################
+
+1a)
+tck290@tux7:~> mkdir 214lab3
+tck290@tux7:~> cd 214lab3
+tck290@tux7:~/214lab3> touch file1.txt file2.txt file3.txt file4.txt file5.txt file6.txt file7.txt file8.txt file9.txt file10.txt file11.txt file12.txt file13.txt file14.txt file15.txt
+tck290@tux7:~/214lab3> touch data1.dat data2.dat data3.dat data4.dat data5.dat
+
+b)
+tck290@tux7:~/214lab3> ls *.dat
+
+c)
+tck290@tux7:~/214lab3> ls -l file1?.txt
+
+d)
+tck290@tux7:~/214lab3> file file[1,3,4,6,9].txt
+
+
+###########
+
+
+2a)
+tck290@tux7:~/214lab3> rm -f fake_file.txt 2>  /dev/null
+
+b)
+tck290@tux7:~/214lab3> cat my_name.txt fake_file.txt
+Tyrel
+cat: fake_file.txt: No such file or directory
+
+c)
+tck290@tux7:~/214lab3> cat my_name.txt fake_file.txt 2> standard_error.txt 1> standard_output.txt
+tck290@tux7:~/214lab3> more standard_output.txt 
+Tyrel
+tck290@tux7:~/214lab3> more standard_error.txt 
+cat: fake_file.txt: No such file or directory
+
+d)
+tck290@tux7:~/214lab3> cat my_name.txt fake_file.txt 2> /dev/null 1> standard_output.txt
+tck290@tux7:~/214lab3> more standard_output.txt 
+Tyrel
+tck290@tux7:~/214lab3> ls standard_*          
+standard_output.txt
+
+
+###########
+
+
+3a)
+tck290@tux7:~/214lab3> top
+
+top - 12:24:01 up 19 days, 19:18, 10 users,  load average: 0.04, 0.11, 0.24
+Tasks: 1463 total,   1 running, 1210 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.4 us,  0.1 sy,  0.0 ni, 99.4 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem : 13191906+total, 11668508+free, 12789404 used,  2444580 buff/cache
+KiB Swap: 16777212 total,  7890632 free,  8886580 used. 11800887+avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                             
+ 9036 nic014    20   0 1036552 219440  58112 S   3.3  0.2  47:45.37 chrome                                                                                              
+ 9965 rjl921    20   0  104248  32864  14632 S   2.3  0.0 200:19.44 consul                                                                                              
+18833 nic014    20   0 8019144 228016  25692 S   2.3  0.2  34:22.86 gnome-shell                                                                                         
+21672 nic014    20   0 8345000 266940  31396 S   2.3  0.2 448:49.48 gnome-shell                                                                                         
+43822 nic014    20   0 8429248 416844  25684 S   2.3  0.3 213:48.57 gnome-shell                                                                                         
+45733 nic014    20   0 1201456 152276  48264 S   1.3  0.1  23:25.90 chrome                                                                                              
+ 7870 oster     20   0  259520   2728    172 S   1.0  0.0 278:41.32 top                                                                                                 
+17803 zzz187    20   0 8476568 446888  28984 S   1.0  0.3  13:04.00 gnome-shell                                                                                         
+28426 tck290    20   0   54088   5244   3164 R   1.0  0.0   0:00.10 top                                                                                                 
+31779 zzz195    20   0 8386264 268376  29544 S   1.0  0.2  13:11.24 gnome-shell                                                                                         
+ 2706 gdm       20   0 8181400 131120  25060 S   0.7  0.1  10:51.72 gnome-shell                                                                                         
+ 4001 fas216    20   0 8662932 481068  29708 S   0.7  0.4   9:01.72 gnome-shell                                                                                         
+ 6002 fas216    20   0 1857424 177024  32652 S   0.7  0.1 141:33.14 atom                                                                                                
+23364 nic014    20   0  0.115t  27852  12764 S   0.7  0.0  11:57.14 WebKitWebProces                                                                                     
+[1]+  Stopped                 top
+
+b)
+QTINC=/usr/lib64/qt-3.3/include
+OS=Linux
+LC_ALL=C
+LD_LIBRARY_PATH=:/usr/lib:/usr/local/lib
+LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
+SSH_CONNECTION=10.230.113.47 34394 128.233.236.7 22
+PLPLOT_LIB=/student/binfo/EMBOSS-6.0.1/plplot/lib
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH
+LANG=en_CA.UTF-8
+HISTCONTROL=ignoredups
+HOSTNAME=tux7
+QTDIR=/usr/lib64/qt-3.3
+EDITOR=vi
+KDEDIRS=/usr
+_pam_krb5_stash_tck290_USASK.CA__1_shm=143818768/25395
+XDG_SESSION_ID=c4034
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+****************************************************************** This is the Current User Env Variable (Asterisks added in after copy-paste)
+USER=tck290
+******************************************************************
+ENV=/usr/share/Modules/init/profile.sh
+CN3D_HOME=/student/binfo/Cn3D-4.1
+PWD=/student/tck290/214lab3
+SMLNJ_HOME=/usr/local
+SSH_ASKPASS=/usr/libexec/openssh/lxqt-openssh-askpass
+HOME=/student/tck290
+HOST=tux7
+SSH_CLIENT=10.230.113.47 34394 22
+PHRED_PARAMETER_FILE=/student/binfo/databases/PhredPar/phredpar.dat
+BASH_ENV=/usr/share/Modules/init/bash
+XDG_DATA_DIRS=/student/tck290/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
+TEXINPUTS=.:/student/tck290/tex/inputs:
+LOADEDMODULES=
+SSH_TTY=/dev/pts/8
+MAIL=/var/spool/mail/tck290
+QTLIB=/usr/lib64/qt-3.3/lib
+TERM=xterm-256color
+SHELL=/bin/bash
+BIBINPUTS=.:/student/tck290/tex/bib:
+SHLVL=1
+PRINTER=UNKNOWN
+UMLET_HOME=/usr/local/UMLet
+MANPATH=/usr/man:/usr/local/man:/usr/share/man:/cs/man
+MODULEPATH=/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+LOGNAME=tck290
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/12971826/bus
+XDG_RUNTIME_DIR=/run/user/12971826
+MODULEPATH_modshare=/usr/share/modulefiles:1:/etc/modulefiles:1:/usr/share/Modules/modulefiles:1
+PATH=/bin:/usr/bin:/usr/local/bin:/student/binfo/bin:.
+PS1=\u@\h:\w> 
+CONSED_HOME=/student/binfo
+MODULESHOME=/usr/share/Modules
+HISTSIZE=1000
+CVS_RSH=ssh
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+BASH_FUNC_module%%=() {  _moduleraw "$@" 2>&1
+}
+BASH_FUNC_switchml%%=() {  typeset swfound=1;
+ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then
+ typeset swname='main';
+ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then
+ typeset swfound=0;
+ unset MODULES_USE_COMPAT_VERSION;
+ fi;
+ else
+ typeset swname='compatibility';
+ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then
+ typeset swfound=0;
+ MODULES_USE_COMPAT_VERSION=1;
+ export MODULES_USE_COMPAT_VERSION;
+ fi;
+ fi;
+ if [ $swfound -eq 0 ]; then
+ echo "Switching to Modules $swname version";
+ source /usr/share/Modules/init/bash;
+ else
+ echo "Cannot switch to Modules $swname version, command not found";
+ return 1;
+ fi
+}
+BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then
+ eval "module $@";
+ else
+ /usr/bin/scl "$@";
+ fi
+}
+BASH_FUNC__moduleraw%%=() {  unset _mlre _mlIFS _mlshdbg;
+ if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then
+ case "$-" in 
+ *v*x*)
+ set +vx;
+ _mlshdbg='vx'
+ ;;
+ *v*)
+ set +v;
+ _mlshdbg='v'
+ ;;
+ *x*)
+ set +x;
+ _mlshdbg='x'
+ ;;
+ *)
+ _mlshdbg=''
+ ;;
+ esac;
+ fi;
+ if [ -n "${IFS+x}" ]; then
+ _mlIFS=$IFS;
+ fi;
+ IFS=' ';
+ for _mlv in ${MODULES_RUN_QUARANTINE:-};
+ do
+ if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then
+ if [ -n "`eval 'echo ${'$_mlv'+x}'`" ]; then
+ _mlre="${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' ";
+ fi;
+ _mlrv="MODULES_RUNENV_${_mlv}";
+ _mlre="${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' ";
+ fi;
+ done;
+ if [ -n "${_mlre:-}" ]; then
+ eval `eval ${_mlre}/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'`;
+ else
+ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash "$@"`;
+ fi;
+ _mlstatus=$?;
+ if [ -n "${_mlIFS+x}" ]; then
+ IFS=$_mlIFS;
+ else
+ unset IFS;
+ fi;
+ if [ -n "${_mlshdbg:-}" ]; then
+ set -$_mlshdbg;
+ fi;
+ unset _mlre _mlv _mlrv _mlIFS _mlshdbg;
+ return $_mlstatus
+}
+_=/bin/env
+OLDPWD=/student/tck290
+
+See Above for User env variable (Look for asterisks)
+
+c)
+tck290@tux7:~> pstree -p $USER
+sshd(25418)
+
+sshd(29052)---bash(29057)-+-pstree(29404)
+                          `-top(29201)
+
+systemd(25403)-+-(sd-pam)(25409)
+               |-dbus-daemon(25584)
+               |-gconfd-2(25586)
+               `-pulseaudio(25417)-+-gconf-helper(25583)
+                                   `-{pulseaudio}(25587)
+
+d)
+tck290@tux7:~> kill -SIGKILL 29201
+[1]+  Killed                  top
+
+e)
+tck290@tux7:~> pstree -p $USER
+sshd(25418)
+
+sshd(29052)---bash(29057)---pstree(29609)
+
+systemd(25403)-+-(sd-pam)(25409)
+               |-dbus-daemon(25584)
+               |-gconfd-2(25586)
+               `-pulseaudio(25417)-+-gconf-helper(25583)
+                                   `-{pulseaudio}(25587)
+
+
+
+
+
+
+
+
+
+
+
+
+

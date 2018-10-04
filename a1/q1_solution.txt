@@ -1,0 +1,43 @@
+CMPT214 Assignment 1
+Tyrel Kostyk, tck290, 11216033
+
+##########################################
+
+### Command Type / Form ONE
+tck290@tux6:~/214ass1> expand myfile.txt 
+        tab one
+no tab
+        tab two
+no tab
+pre-tab post-tab        post-tab-pt2
+
+### Command Type / Form TWO
+tck290@tux6:~/214ass1> more myfile.txt | expand 
+        tab one
+no tab
+        tab two
+no tab
+pre-tab post-tab        post-tab-pt2
+
+### Command Type / Form THREE
+tck290@tux7:~/214ass1> cat < myfile.txt | expand -
+        tab one
+no tab
+        tab two
+pre-tab post-tab        post-tab-pt2
+
+
+### Command Type / Form FOUR
+tck290@tux6:~/214ass1> expand < myfile.txt 
+        tab one
+no tab
+        tab two
+pre-tab post-tab        post-tab-pt2
+
+### Command Type / Form FIVE
+tck290@tux7:~/214ass1> cat < myfile.txt | expand                 
+        tab one
+no tab
+        tab two
+pre-tab post-tab        post-tab-pt2
+
