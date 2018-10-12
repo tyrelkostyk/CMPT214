@@ -1,0 +1,8 @@
+CMPT214 Assignment 1, Question 2
+Tyrel Kostyk, tck290, 11216033
+
+##########################################
+
+$ apropos "regular expression" | egrep -v '\(3[a-zA-Z]*\)' | tee q2_re.txt
+
+

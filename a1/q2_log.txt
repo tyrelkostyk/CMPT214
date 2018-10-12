@@ -1,0 +1,30 @@
+CMPT214 Assignment 1, Question 2
+Tyrel Kostyk, tck290, 11216033
+
+##########################################
+
+
+tck290@tux8:~/214ass1> apropos "regular expression" | egrep -v '\(3[a-zA-Z]*\)' | tee q2_re.txt
+bzegrep (1)          - search possibly bzip2 compressed files for a regular expression
+bzfgrep (1)          - search possibly bzip2 compressed files for a regular expression
+bzgrep (1)           - search possibly bzip2 compressed files for a regular expression
+lzegrep (1)          - search compressed files for a regular expression
+lzfgrep (1)          - search compressed files for a regular expression
+lzgrep (1)           - search compressed files for a regular expression
+perlre (1)           - Perl regular expressions
+perlreapi (1)        - Perl regular expression plugin interface
+perlrebackslash (1)  - Perl Regular Expression Backslash Sequences and Escapes
+perlrecharclass (1)  - Perl Regular Expression Character Classes
+perlreguts (1)       - Description of the Perl regular expression engine.
+perlrequick (1)      - Perl regular expressions quick start
+perlreref (1)        - Perl Regular Expressions Reference
+perlretut (1)        - Perl regular expressions tutorial
+regex (7)            - POSIX.2 regular expressions
+regex.h (0p)         - regular expression matching types
+regexp_table (5)     - format of Postfix regular expression tables
+sefcontext_compile (8) - compile file context regular expression files
+xzegrep (1)          - search compressed files for a regular expression
+xzfgrep (1)          - search compressed files for a regular expression
+xzgrep (1)           - search compressed files for a regular expression
+zgrep (1)            - search possibly compressed files for a regular expression
+

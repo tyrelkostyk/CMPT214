@@ -1,0 +1,95 @@
+CMPT214 Lab 4
+Tyrel Kostyk, tck290, 11216033
+
+#################################
+
+1.
+tck290@tux7:~> df $HOME
+Filesystem             1K-blocks       Used  Available Use% Mounted on
+192.168.80.1:/student 6341229568 2408861696 3610247168  41% /student
+
+
+2.
+a)
+tck290@tux7:~/214lab4/dir1> cp /etc/passwd ../dir2/
+
+b)
+tck290@tux7:~/214lab4> tar -czvf dirs.tar.gz dir1/ dir2/
+dir1/
+dir2/
+dir2/passwd
+
+tck290@tux7:~/214lab4> ls
+dir1/  dir2/  dirs.tar.gz
+
+tck290@tux7:~/214lab4> echo 'Edge of Tomorrow' > favourite_movie.tar.gz
+
+c)
+tck290@tux7:~/214lab4> file *.gz
+dirs.tar.gz:            gzip compressed data, last modified: Fri Oct  5 14:59:12 2018, from Unix, original size 10240
+favourite_movie.tar.gz: ASCII text
+
+
+3
+a)
+tck290@tux7:~/214lab4> w > wtemp.txt
+tck290@tux7:~/214lab4> tail wtemp.txt -n +3 > w.txt
+tck290@tux7:~/214lab4> more w.txt 
+tck290   pts/1     08:46    6.00s  0.23s  0.02s w
+lrr598   pts/4     09:00   38.00s  0.08s  0.08s -bash
+eager    pts/5     09:00   12:12   0.11s  0.11s -csh
+eager    pts/14    09:01   19.00s  0.17s  0.06s alpine
+eager    pts/30    09:02   10:52   0.10s  0.10s -csh
+
+b)
+tck290@tux7:~/214lab4> cut -d ' ' -f 1 w.txt 
+tck290
+lrr598
+eager
+eager
+eager
+
+c)
+tck290@tux7:~/214lab4> tr -s ' ' < w.txt > w1.txt 
+
+d)
+tck290@tux7:~/214lab4> cut -d ' ' -f 5 w1.txt | sort -r
+0.23s
+0.17s
+0.11s
+0.10s
+0.08s
+
+4.
+tck290@tux7:~/214lab4> sort usernames.txt > usernames_sorted.txt && diff -q usernames.txt usernames_sorted.txt
+Files usernames.txt and usernames_sorted.txt differ
+
+First I sort usernames.txt & place the output into usernames_sorted.txt, then I used the diff command with the -q option to output only if the two files are different. If usernames.txt were already sorted, then there would be no difference
+
+
+5.
+tck290@tux7:~/214lab4> sort usernames.txt | diff -q usernames.txt -
+Files usernames.txt and - differ
+
+Same reasoning as Q4, but with stdin and piping, rather than temp file & redirection
+
+
+6.
+tck290@tux7:~/214lab4> POSTAL_CODE='S7J 4Y7'
+tck290@tux7:~/214lab4> egrep '\<[A-Z][0-9][A-Z] [0-9][A-Z][0-9]\>' <<< "$POSTAL_CODE"
+S7J 4Y7
+
+tck290@tux7:~/214lab4> POSTAL_CODE='S8F 7Y3'
+tck290@tux7:~/214lab4> egrep '\<[A-Z][0-9][A-Z] [0-9][A-Z][0-9]\>' <<< "$POSTAL_CODE"
+S8F 7Y3
+
+tck290@tux7:~/214lab4> POSTAL_CODE='junkS7N 5C9garbage'
+tck290@tux7:~/214lab4> egrep '\<[A-Z][0-9][A-Z] [0-9][A-Z][0-9]\>' <<< "$POSTAL_CODE"
+tck290@tux7:~/214lab4> 
+
+
+
+
+
+
+

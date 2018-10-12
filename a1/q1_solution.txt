@@ -1,4 +1,4 @@
-CMPT214 Assignment 1
+CMPT214 Assignment 1, Question 1
 Tyrel Kostyk, tck290, 11216033
 
 ##########################################

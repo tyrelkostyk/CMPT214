@@ -1,0 +1,236 @@
+CMPT214 Lab 5
+Tyrel Kostyk, tck290, 11216033
+
+#################################################
+
+
+1a)
+ARE matches:
+tck290@tux5:~/214/lab5> egrep '(^I|^O).*[a-z]+.*box$' mailinfo.txt 
+Inbox
+Is a match box
+Outbox
+Open the magic box
+
+NOT matches:
+tck290@tux5:~/214/lab5> egrep -v '(^I|^O).*[a-z]+.*box$' mailinfo.txt 
+the Inbox
+Doesn't match
+INBOX
+Outbox1
+InbOX
+Ibox
+I box
+
+b)
+ARE matches:
+tck290@tux5:~/214/lab5> egrep -c '(^I|^O).*[a-z]+.*box$' mailinfo.txt 
+4
+
+NOT matches:
+tck290@tux5:~/214/lab5> egrep -cv '(^I|^O).*[a-z]+.*box$' mailinfo.txt 
+7
+
+
+2.
+tck290@tux5:~/214lab5> cp /etc/passwd passwd
+
+a)
+tck290@tux5:~/214lab5> cut -d ':' -f 1 passwd 
+root
+bin
+daemon
+adm
+lp
+sync
+shutdown
+halt
+mail
+operator
+games
+ftp
+nobody
+apache
+systemd-coredump
+systemd-network
+systemd-resolve
+dbus
+polkitd
+geoclue
+colord
+rtkit
+pulse
+gluster
+qemu
+avahi
+dnsmasq
+usbmuxd
+rpc
+openvpn
+nm-openvpn
+radvd
+saslauth
+nm-openconnect
+pipewire
+abrt
+gdm
+rpcuser
+gnome-initial-setup
+chrony
+vboxadd
+sshd
+tcpdump
+local
+tss
+canna
+mysql
+sddm
+setroubleshoot
+unbound
+lightdm
+sstpc
+oprofile
+nagios
+munge
+epmd
+nrpe
+boinc
+nscd
+nslcd
+postfix
+akmods
+
+b)
+tck290@tux5:~/214lab5> cut -d ':' -f 1 passwd | sort -r
+vboxadd
+usbmuxd
+unbound
+tss
+tcpdump
+systemd-resolve
+systemd-network
+systemd-coredump
+sync
+sstpc
+sshd
+shutdown
+setroubleshoot
+sddm
+saslauth
+rtkit
+rpcuser
+rpc
+root
+radvd
+qemu
+pulse
+postfix
+polkitd
+pipewire
+oprofile
+operator
+openvpn
+nslcd
+nscd
+nrpe
+nobody
+nm-openvpn
+nm-openconnect
+nagios
+mysql
+munge
+mail
+lp
+local
+lightdm
+halt
+gnome-initial-setup
+gluster
+geoclue
+gdm
+games
+ftp
+epmd
+dnsmasq
+dbus
+daemon
+colord
+chrony
+canna
+boinc
+bin
+avahi
+apache
+akmods
+adm
+abrt
+
+c)
+tck290@tux8:~/214lab5> cut -d ':' -f 1 passwd | sort | tail -1
+vboxadd
+
+d)
+tck290@tux8:~/214lab5> cut -d ':' -f 1 passwd | sort | tail -1 | cut -c 1
+v
+
+e)
+tck290@tux8:~/214lab5> cut -d ':' -f 1 passwd | sort | tail -1 | cut -c 1 | tr [:lower:] [:upper:]
+V
+
+f)
+tck290@tux8:~/214lab5> cut -d ':' -f 1 passwd | sort | tail -1 > max_username.txt
+tck290@tux8:~/214lab5> more max_username.txt 
+vboxadd
+
+
+3a)
+tck290@tux7:~/214lab5> printf "%s\t%s\n%s\t%d\n" "$COLUMN_HEADING1" "$COLUMN_HEADING2" "John" 123456789
+Name	Student Number
+John	123456789
+
+b) (I added the trailing newline character for readability)
+tck290@tux7:~/214lab5> printf "%s\n" "\$COLUMN_HEADING1\\t\$COLUMN_HEADING2\\nJohn\\t123456789\\n"
+$COLUMN_HEADING1\t$COLUMN_HEADING2\nJohn\t123456789\n
+
+
+4a)
+tck290@tux7:~/214lab5> gcc q4.c 
+tck290@tux7:~/214lab5> ./a.out 
+The one's complement of 34567 is 0xffff78f8 or 037332403430
+x = 10.370000
+
+b)
+tck290@tux7:~/214lab5> gcc -Wall -Wextra -o q4 q4.c 
+q4.c: In function 'main':
+q4.c:13:51: warning: format '%o' expects a matching 'unsigned int' argument [-Wformat=]
+   printf( "The one's complement of %d is %#x or %#o\n", i, ci );
+                                                 ~~^
+tck290@tux7:~/214lab5> ./q4
+The one's complement of 34567 is 0xffff78f8 or 022463453430
+x = 10.370000
+
+c)
+tck290@tux7:~/214lab5> gcc -Wall -Wextra -o q4_fixed q4_fixed.c 
+tck290@tux7:~/214lab5> ./q4_fixed 
+The one's complement of 34567 is 0xffff78f8 or 037777674370
+x = 10.370000
+
+d)
+tck290@tux7:~/214lab5> diff q4.c q4_fixed.c 
+13c13
+<   printf( "The one's complement of %d is %#x or %#o\n", i, ci );
+---
+>   printf( "The one's complement of %d is %#x or %#o\n", i, ci, ci );
+
+e)
+tck290@tux7:~/214lab5> gcc -Wall -Wextra -o q4_modified q4_modified.c 
+tck290@tux7:~/214lab5> ./q4_modified 
+The one's complement of 34567 is 0xffff78f8 or 037777674370
+x = 10.37
+
+tck290@tux7:~/214lab5> diff q4_*.c
+16c16
+<   printf( "x = %f\n", x );
+---
+>   printf( "x = %.2f\n", x );
+
