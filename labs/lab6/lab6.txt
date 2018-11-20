@@ -1,0 +1,77 @@
+CMPT214 Lab 6 - Oct 21st 2018
+Tyrel Kostyk, tck290, 11216033
+
+################################
+
+1.
+tck290@tux5:~/214/lab6> hostname
+tux5
+tck290@tux5:~/214/lab6> egrep -v '/var' /etc/passwd | egrep '[sS]ystem|root' 
+root:x:0:0:root:/root:/bin/bash
+operator:x:11:0:operator:/root:/sbin/nologin
+systemd-coredump:x:999:996:systemd Core Dumper:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+
+2.
+tck290@tux5:~/214/lab6> egrep '(\b[_a-zA-Z]+) \1\b' sentences.txt This is a sentence sentence.
+This is a a another sentence.
+this this is a sentence.
+Another matching matching example.
+
+3.
+tck290@tux5:~/214/lab6> egrep '#define EXIT_SUCCESS' -r /usr/include
+/usr/include/c++/8/cstdlib:#define EXIT_SUCCESS 0
+
+4.a)
+Decimal: 0178(octal) = (0x8^3)+(1x8^2)+(7x8^1)+(3x8^0) = 0+64+56+3 = 123
+Hex: 123/16 = 7r11; 0173(octal) = 7B(hex)
+b)
+Octal: 173/64 = 2r45, 45/8=5r5; 123(dec) = 255(octal)
+hex: 173/16 =  10r13; 173(dec) = AD(hex)
+c)
+0x173 = (16^2)+(7x16)+3 = 371(dec)
+371(dec) / 64 = 5r51, 51/8 = 6r3; 371(dec) = 563(octal)
+
+5.
+a)
+tck290@tux5:~/214/lab6> diff q5.c q5_float.c 
+12c12
+<   printf("%f %f %d\n", d, f, i);
+---
+>   printf("%.4f %.4f %d\n", d, f, i);
+tck290@tux5:~/214/lab6> gcc -o q5_float -Wall -Wextra q5_float.c 
+tck290@tux5:~/214/lab6> ./q5_float 
+10.4567 11.6789 13
+
+b)
+tck290@tux5:~/214/lab6> diff q5.c q5_int.c 
+12c12
+<   printf("%f %f %d\n", d, f, i);
+---
+>   printf("%d %d %d\n", (int)d, (int)f, i);
+tck290@tux5:~/214/lab6> gcc -o q5_int -Wall -Wextra q5_int.c
+tck290@tux5:~/214/lab6> ./q5_int 
+10 11 13
+
+c)
+tck290@tux5:~/214/lab6> diff q5.c q5_hex.c 
+12c12
+<   printf("%f %f %d\n", d, f, i);
+---
+>   printf("%f %f %#x\n", d, f, i);
+tck290@tux5:~/214/lab6> gcc -o q5_hex -Wall -Wextra q5_hex.c
+tck290@tux5:~/214/lab6> ./q5_hex 
+10.456712 11.678900 0xd
+
+d)
+tck290@tux5:~/214/lab6> diff q5.c q5_cast.c 
+12c12
+<   printf("%f %f %d\n", d, f, i);
+---
+>   printf("%f %f %f\n", d, f, (double)i);
+tck290@tux5:~/214/lab6> gcc -o q5_cast -Wall -Wextra q5_cast.c
+tck290@tux5:~/214/lab6> q5_cast 
+10.456712 11.678900 13.000000
+

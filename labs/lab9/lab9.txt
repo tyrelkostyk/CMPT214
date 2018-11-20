@@ -1,0 +1,166 @@
+CMPT214 Lab 9 - Sunday Nov 18th 2018
+Tyrel Kostyk, tck290, 11216033
+
+######################################
+
+1.
+tck290@tux6:~/lab9> paste first_file.txt second_file.txt 
+y	1
+y	2
+y	3
+y	4
+y	5
+y	6
+y	7
+y	8
+y	9
+y	10
+
+
+2.
+tck290@tux6:~/lab9> sort -k2 -nr my_output.txt 
+y	10
+y	9
+y	8
+y	7
+y	6
+y	5
+y	4
+y	3
+y	2
+y	1
+
+
+3.
+tck290@tux6:~/lab9> gcc -Wall -Wextra -o q3 q3.c
+q3.c: In function 'some_function_int':
+q3.c:7:27: warning: unused parameter 'b' [-Wunused-parameter]
+ int some_function_int(int b)
+                       ~~~~^
+q3.c: In function 'some_function_float':
+q3.c:13:32: warning: unused parameter 'd' [-Wunused-parameter]
+ float some_function_float(char d)
+                           ~~~~~^
+q3.c: In function 'some_function_void':
+q3.c:19:32: warning: unused parameter 'b' [-Wunused-parameter]
+ void some_function_void(float* b)
+                         ~~~~~~~^
+tck290@tux6:~/lab9> gcc -Wall -Wextra -o q3_fixed q3_fixed.c
+tck290@tux6:~/lab9> ./q3_fixed 
+Done!
+tck290@tux6:~/lab9> diff q3.c q3_fixed.c 
+10c10
+<     return 0;
+---
+>     return b;
+16c16
+<     return 0.0;
+---
+>     return (float)d;
+21a22
+>     return (void)b;
+
+
+4.
+tck290@tux8:~/lab9> cp q4_incomplete.c q4.c
+tck290@tux8:~/lab9> gcc -Wall -Wextra -o q4 q4.c 
+tck290@tux8:~/lab9> ./q4 
+b[0][0] = 00 b[0][1] = 01 b[0][2] = 02 b[0][3] = 04 b[0][4] = 05 
+b[1][0] = 10 b[1][1] = 11 b[1][2] = 12 b[1][3] = 13 b[1][4] = 14 
+b[2][0] = 20 b[2][1] = 21 b[2][2] = 22 b[2][3] = 23 b[2][4] = 24 
+b[3][0] = 30 b[3][1] = 31 b[3][2] = 32 b[3][3] = 33 b[3][4] = 34 
+b[4][0] = 40 b[4][1] = 41 b[4][2] = 42 b[4][3] = 43 b[4][4] = 44 
+
+column 5 is out-of-bounds in [0][5]
+row 5 is out-of-bounds in [5][0]
+value of element [1][1] = 11
+value of element [4][3] = 43
+tck290@tux8:~/lab9> diff q4_incomplete.c q4.c 
+32c32
+<     elem_p = // replace this comment with the correct expression 
+---
+>     elem_p = vec_p + (( i * num_cols) + j); 
+
+
+5.
+tck290@tux8:~/lab9> cp q5_incomplete.c q5.c
+tck290@tux8:~/lab9> gcc -Wall -Wextra q5.c
+tck290@tux8:~/lab9> ./a.out < q5_input.txt
+a:
+1.00 2.00 3.00 4.00 5.00
+1.00 2.00 3.00 4.00 5.00
+1.00 2.00 3.00 4.00 5.00
+1.00 2.00 3.00 4.00 5.00
+1.00 2.00 3.00 4.00 5.00
+
+b:
+5.00 4.00 3.00 2.00 1.00
+5.00 4.00 3.00 2.00 1.00
+5.00 4.00 3.00 2.00 1.00
+5.00 4.00 3.00 2.00 1.00
+5.00 4.00 3.00 2.00 1.00
+
+Result using first method:
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+
+Result using second method:
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+75.00 60.00 45.00 30.00 15.00
+
+tck290@tux8:~/lab9> diff q5_incomplete.c q5.c
+111c111
+<                                 accum += // complete the rest of this statement
+---
+>                                 accum += (a[i][0+k])*(b[0+k][j]); // complete the rest of this statement
+
+
+
+6.
+tck290@tux8:~/lab9> gcc -Wall -Wextra example_72.c
+tck290@tux8:~/lab9> ./a.out
+input two coordinates and a color, all separated by spaces
+5 5 blue
+thanks
+--
+blue point at (5.000000,5.000000)
+tck290@tux8:~/lab9> gcc -Wall -Wextra q6.c
+tck290@tux8:~/lab9> ./a.out
+input two coordinates and a color, all separated by spaces
+5 5 blue
+thanks
+--
+ point at (5.000000,5.000000)
+
+
+7.
+tck290@tux8:~/lab9> cp q7_incomplete.c q7.c
+tck290@tux8:~/lab9> gcc -Wall -Wextra q7.c
+tck290@tux8:~/lab9> ./a.out
+point color is green
+point color is red
+point color is pink
+
+point color is green
+point color is red
+point color is pink
+tck290@tux8:~/lab9> diff q7_incomplete.c q7.c
+12c12
+< typedef // replace this comment with the rest of the declaration
+---
+> typedef char * string;// replace this comment with the rest of the declaration
+53c53
+<   // replace this comment with the definition of point_p of correct type
+---
+>   struct point ** point_p;// replace this comment with the definition of point_p of correct type
+78c78
+<      printf( "point color is %s\n", // replace this comment with a correct expression );
+---
+>      printf( "point color is %s\n", (*point_p)->color);// replace this comment with a correct expression );
+

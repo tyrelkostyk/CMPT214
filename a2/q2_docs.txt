@@ -1,0 +1,16 @@
+CMPT214 Assignment 2 Question 2 - fib.c Documentation
+Tyrel Kostyk, tck290, 11216033
+
+##############################
+
+This is a simple c program written to calculate the given fibbonacci sequence value that matches with the given sequence "number". The Fibbonacci Sequence is defined as:
+F(0) = 0;
+F(1) = 1;
+F(n) = F(n-2) + F(n-1); for all n > 1
+F(n) = F(n+2) + F(n+1); for all n < 0
+
+When executed, this program takes in an int from stdin, entered by the user after a prompt. It then returns & displays either the corresponding value, or an error if an Overflow was encountered. Overflow happens for any given input greater/lower than +/-47.
+
+The main function defines the input and output ints, and is in charge of handling the reading & displaying to stdout. After reading user input, it calls the fib() function, which takes in an int n & returns an int, assigned to fib_result in main.
+
+The fib() function calculates the max & min values before overflow based on the inputs datatype, and then recursively calls itself until it reaches its base case; when n is either a 0 or a 1.

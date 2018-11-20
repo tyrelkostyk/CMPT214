@@ -1,0 +1,149 @@
+CMPT214 Lab 8 - Friday Nov 2nd 2018
+Tyrel Kostyk, tck290, 11216033
+
+######################################
+
+1. b)
+tck290@tux8:~/214/lab8> tar -xvf L8Q1.with_cr.txt.tar
+L8Q1.with_cr.txt
+
+tck290@tux8:~/214/lab8> pr -tn L8Q1.with_cr.txt
+}   1	return x + 1;x) {
+}nt subtreturn x - 1;{
+}nt doubreturn x * 2;{
+}eturn x / 2;int x) {
+int main} else {} else {result = 3;d1(myint);int);
+}   6	return result;
+
+c)
+tck290@tux8:~/214/lab8> hexdump -c L8Q1.with_cr.txt |  grep '\\r\|\\n'
+0000010   {  \r  \t   r   e   t   u   r   n       x       +       1   ;
+0000020  \r   }  \n  \r   i   n   t       s   u   b   t   r   a   c   t
+0000030   1   (   i   n   t       x   )       {  \r  \t   r   e   t   u
+0000040   r   n       x       -       1   ;  \r   }  \n  \r   i   n   t
+0000060   )       {  \r  \t   r   e   t   u   r   n       x       *    
+0000070   2   ;  \r   }  \n  \r   i   n   t       h   a   l   v   e   _
+0000080   i   t   (   i   n   t       x   )       {  \r   r   e   t   u
+0000090   r   n       x       /       2   ;  \r   }  \n  \r   i   n   t
+00000a0       m   a   i   n   (   )       {  \r  \t   i   n   t       m
+00000b0   y   i   n   t   ;  \r  \t   i   n   t       r   e   s   u   l
+00000c0   t   ;  \r  \t   s   c   a   n   f   (   "   %   d   "   ,    
+00000d0   &   m   y   i   n   t   )   ;  \r  \t   i   f       (   m   y
+00000e0   i   n   t       >   =       0   )       {  \r  \t  \t   i   f
+0000100  \r  \t  \t  \t   r   e   s   u   l   t       =       h   a   l
+0000110   v   e   _   i   t   (   m   y   i   n   t   )   ;  \r  \t  \t
+0000120   }       e   l   s   e       {  \r  \t  \t  \t   r   e   s   u
+0000140   y   i   n   t   )   ;  \r  \t  \t   }  \r  \t   }       e   l
+0000150   s   e       {  \r  \t  \t   i   f       (   m   y   i   n   t
+0000160       >       -   1   0   )       {  \r  \t  \t  \t   r   e   s
+0000180   m   y   i   n   t   )   ;  \r  \t  \t   }       e   l   s   e
+00001a0   )       {  \r  \t  \t  \t   r   e   s   u   l   t       =    
+00001b0   a   d   d   1   (   m   y   i   n   t   )   ;  \r  \t  \t   }
+00001c0       e   l   s   e       {  \r  \t  \t  \t   r   e   s   u   l
+00001d0   t       =       3   ;  \r  \t  \t   }  \n  \r  \t   r   e   t
+00001e0   u   r   n       r   e   s   u   l   t   ;  \r   }  \n        
+
+
+2. a)
+tck290@tux8:~> du -s /usr/local/bin
+234372	/usr/local/bin
+
+b)
+tck290@tux8:~> export BLOCKSIZE="1M"
+
+c)
+tck290@tux8:~> du -s /usr/local/bin
+229	/usr/local/bin
+
+d)
+tck290@tux8:~> unset BLOCKSIZE 
+tck290@tux8:~> du -s /usr/local/bin
+234372	/usr/local/bin
+
+
+3.
+tck290@tux8:~> ls -ld ~
+drwx------ 27 tck290 student 4096 Oct 26 10:13 /student/tck290/
+
+
+4.
+tck290@tux8:~/214/lab8> gcc -o q4 -Wall -Wextra q4.c  
+tck290@tux8:~/214/lab8> cp q4.c q4_modified.c
+tck290@tux8:~/214/lab8> diff q4.c q4_modified.c 
+10c10
+<     int sa = 5;
+---
+>     static int sa = 5;
+tck290@tux8:~/214/lab8> gcc -o q4_modified -Wall -Wextra q4_modified.c
+tck290@tux8:~/214/lab8> ./q4_modified 
+a: 25, sa: 25
+a: 25, sa: 625
+a: 25, sa: 390625
+a: 25, sa: -2030932031
+a: 25, sa: -2052264063
+a: 25, sa: -1083564287
+a: 25, sa: 781532673
+a: 25, sa: -1741784063
+a: 25, sa: -59967487
+a: 25, sa: 689565697
+
+
+5. a)
+tck290@tux8:~/214/lab8> gcc -o example_37 -Wall -Wextra example_37.c 
+tck290@tux8:~/214/lab8> ./example_37 
+I am a constant
+Hello
+Hello
+
+b)
+tck290@tux8:~/214/lab8> diff example_37.c example_37_modified.c 
+24c24,26
+<         return 0; 
+---
+> 	a[0] = 'X';
+> 	printf("%s\n%s\n%s\n", a, b, c);
+> 	return 0; 
+tck290@tux8:~/214/lab8> gcc -o example_37_modified -Wall -Wextra example_37_modified.c 
+tck290@tux8:~/214/lab8> ./example_37_modified 
+I am a constant
+Hello
+Hello
+Segmentation fault (core dumped)
+
+c)
+tck290@tux8:~/214/lab8> diff example_37.c example_37_modified.c 
+24c24,26
+<         return 0; 
+---
+> 	b[0] = 'X';
+> 	printf("%s\n%s\n%s\n", a, b, c);
+> 	return 0; 
+tck290@tux8:~/214/lab8> gcc -o example_37_modified -Wall -Wextra example_37_modified.c 
+tck290@tux8:~/214/lab8> ./example_37_modified 
+I am a constant
+Hello
+Hello
+I am a constant
+Xello
+Hello
+
+
+6. 
+tck290@tux8:~/214/lab8> diff q6.c q6_modified.c 
+11,13c11,13
+<     a = malloc();  /* provide the parameters for this function call */
+<     int sizeof_a = /* complete this line; determine the size, in bytes, of a */;
+<     int sizeof_b = /* complete this line; determine the size, in bytes, of b */;
+---
+>     a = malloc(10);  /* provide the parameters for this function call */
+>     int sizeof_a = sizeof(a)/* complete this line; determine the size, in bytes, of a */;
+>     int sizeof_b = sizeof(b)/* complete this line; determine the size, in bytes, of b */;
+tck290@tux8:~/214/lab8> gcc -o q6_modified -Wall -Wextra q6_modified.c 
+tck290@tux8:~/214/lab8> ./q6_modified
+sizeof_a = 8 
+sizeof_b = 40 
+
+
+
+
+

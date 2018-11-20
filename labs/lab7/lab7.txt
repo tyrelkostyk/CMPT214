@@ -1,0 +1,191 @@
+CMPT214 Lab 7 - Friday October 26th
+Tyrel Kostyk - tck290 - 11216033
+
+###################################
+
+1a)
+tck290@tux7:~/lab7_214> pr -tn q1.c 
+    1	/*
+    2	  program for Question 1 of Lab 07
+    3	 */
+    4	
+    5	#include <stdio.h>
+    6	
+    7	int i = 0;
+    8	
+    9	void function( int i ) {
+   10	    i = 3;                      // A //                   
+   11	}
+   12	
+   13	int main() {
+   14	    int sum;
+   15	
+   16	    for ( int i=0; i<7; ++i ) 
+   17	    {
+   18	        sum += i;               // B //
+   19	    }
+   20	    printf("%d\n", i);          // C //
+   21	    function(i);
+   22	    printf("%d\n", i);
+   23	}
+
+b)
+####################################
+## Line ## Variable ##  Def Line  ##
+####################################
+## A=10 ##    i     ##   line 9   ##
+##------##----------##------------##
+## B=18 ##  sum, i  ##    14,16   ##
+##------##----------##------------##
+## C=20 ##    i     ##   line 7   ##
+####################################
+
+
+2a)
+press <shift+m> while top is running
+Output:
+###################################################################################
+Tasks: 1682 total,   2 running, 1424 sleeping,   6 stopped,   0 zombie
+%Cpu(s):  1.2 us,  2.1 sy,  2.6 ni, 94.0 id,  0.0 wa,  0.1 hi,  0.1 si,  0.0 st
+KiB Mem : 13191906+total, 88673136 free, 11623308 used, 31622624 buff/cache
+KiB Swap: 16777212 total,  4541020 free, 12236192 used. 11906029+avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                             
+ 2780 root      20   0 4505984 691304  46872 S   0.0  0.5 346:29.22 rsyslogd                                                                                            
+45677 root      20   0 1209952 461100  17324 S   0.0  0.3   2:31.56 packagekitd                                                                                         
+17803 zzz187    20   0 8534800 395192  29880 S   0.0  0.3  31:33.80 gnome-shell                                                                                         
+ 1910 nic014    20   0 7871944 353980  98288 S   2.3  0.3  14:26.49 gnome-shell                                                                                         
+29542 ccc602    20   0 36.804g 348320  12164 S   0.0  0.3   4:20.43 java                                                                                                
+44370 fas216    20   0 8028656 348196 101396 S   0.0  0.3   0:49.34 gnome-shell                                                                                         
+ 9025 nic014    20   0 8109504 313160  49796 S   3.3  0.2 140:50.44 gnome-shell                                                                                         
+33422 sdt747    20   0 7929004 310584  77220 S   0.0  0.2   1:45.01 gnome-shell                                                                                         
+46878 oster     20   0 8795984 295000  21940 S   0.0  0.2  22:55.06 gnome-shell                                                                                         
+ 9930 nic014    20   0 8028248 293528  49404 S   3.0  0.2 128:06.69 gnome-shell                                                                                         
+22600 zzz196    20   0 8387904 237996  21868 S   0.0  0.2  13:50.86 gnome-shell                                                                                         
+ 7664 zzz195    20   0 8404372 230556  28060 S   0.0  0.2   6:15.92 gnome-shell                                                                                         
+29001 ccc602    20   0 8239348 227484  36368 S   0.0  0.2   2:14.25 gnome-shell                                                                                         
+ 9601 nic014    20   0 7977488 206860  23140 S   2.3  0.2 103:18.10 gnome-shell                                                                                         
+37995 zzz196    20   0 9037064 205068   9604 S   0.0  0.2  87:35.22 java                                                                                                
+10442 nic014    20   0 7810060 190316  22464 S   2.6  0.1 116:39.57 gnome-shell                                                                                         
+19915 sdt747    20   0 36.806g 176076   9552 S   0.0  0.1  17:04.47 java                                                                                                
+ 6002 fas216    20   0 1869688 116112  33544 S   0.3  0.1 453:23.30 atom                                                                                                
+ 3423 fas216    20   0 1515532  99156   8360 S   0.0  0.1   0:20.19 Xvnc                                                                                                
+32172 zzz195    20   0 36.999g  97464  10816 S   0.0  0.1  45:03.03 java                                                                                                
+37004 zzz196    20   0 36.999g  95028   8496 S   0.0  0.1  38:52.29 java                                                                                                
+21376 gdm       20   0 8231648  85652  16696 S   0.0  0.1  10:56.26 gnome-shell                                                                                         
+35560 root      20   0  248020  80008  72148 S  32.8  0.1   1718:06 systemd-journal                                                                                     
+ 4334 fas216    20   0 36.806g  71752  12052 S   0.0  0.1  41:45.26 java                                                                                                
+18188 zzz187    20   0 36.803g  48804   8064 S   0.0  0.0  45:57.63 java                                                                                                
+ 4360 fas216    20   0  846244  42760  17400 S   0.0  0.0   3:54.19 dnfdragora-upda                                                                                     
+29660 ccc602    20   0  845548  41956  24712 S   0.0  0.0   0:18.47 dnfdragora-upda                                                                                     
+21996 nic014    20   0 36.870g  39052   4596 S   0.3  0.0  42:17.61 java                                                                                                
+28348 ccc602    20   0 1430208  37532   8756 S   0.0  0.0   0:06.25 Xvnc                                                                                                
+ 6990 fas216    20   0 1384848  35752  18700 S   0.0  0.0   0:05.51 nautilus                                                                                            
+ 9965 rjl921    20   0  104760  35012  22520 S   1.6  0.0 620:39.92 consul                                                                                              
+ 1529 polkitd   20   0 5506104  30908   8820 S   0.0  0.0  84:15.86 polkitd                                                                                             
+31203 sdt747    20   0  550356  30244  14108 S   0.0  0.0   0:01.86 tracker-store                                                                                       
+ 2359 root      20   0  847756  28776   3152 S   0.0  0.0  53:11.37 /usr/bin/python                                                                                     
+ 4338 root      20   0  349952  26996   1552 S   0.0  0.0   1:11.50 abrt-dbus                                                                                           
+29477 ccc602    20   0  603908  24292   7180 S   0.0  0.0   0:00.70 tracker-store                                                                                       
+20651 eager     20   0  106920  23032  11548 S   0.0  0.0   0:00.23 vim                                                                                                 
+26386 nic014    20   0 1420820  20212   2220 S   0.0  0.0   1:21.55 Xvnc                                                                                                
+###################################################################################
+
+b)
+press <c> while top is running
+Output:
+###################################################################################
+Tasks: 1685 total,   2 running, 1428 sleeping,   4 stopped,   0 zombie
+%Cpu(s):  1.3 us,  2.5 sy,  2.3 ni, 93.7 id,  0.0 wa,  0.1 hi,  0.1 si,  0.0 st
+KiB Mem : 13191906+total, 88677680 free, 11638492 used, 31602896 buff/cache
+KiB Swap: 16777212 total,  4540764 free, 12236448 used. 11904494+avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                                             
+ 4327 fas216    39  19  0.250t   7760   4596 S  95.1  0.0  11628:42 baloo_file                                                                                          
+15361 fas216    39  19  0.250t   5468   3916 S  87.9  0.0  11925:36 /bin/baloo_file_extractor                                                                           
+35560 root      20   0  321748  47980  40128 R  48.5  0.0   1712:19 /usr/lib/systemd/systemd-journald                                                                   
+ 3479 fas216    20   0   53940   3716   1992 S  33.2  0.0   4168:50 /usr/bin/dbus-daemon --syslog --fork --print-pid 5 --print-address 7 --session                      
+ 2780 root      20   0 4503444 693568  50828 S  27.0  0.5 346:02.44 /usr/sbin/rsyslogd -n                                                                               
+ 9025 nic014    20   0 8109504 311104  49796 S   2.6  0.2 140:22.15 /usr/bin/gnome-shell                                                                                
+ 9930 nic014    20   0 8037464 324308  49404 S   2.3  0.2 127:41.93 /usr/bin/gnome-shell                                                                                
+ 1910 nic014    20   0 7869896 352248  98288 S   2.0  0.3  14:05.28 /usr/bin/gnome-shell                                                                                
+10442 nic014    20   0 7810060 188756  22464 S   2.0  0.1 116:17.94 /usr/bin/gnome-shell                                                                                
+14501 tck290    20   0   54556   5820   3204 R   2.0  0.0   0:00.51 top                                                                                                 
+ 7870 oster     20   0  259656   3720   1092 S   1.6  0.0 975:59.13 top                                                                                                 
+ 9601 nic014    20   0 7975440 205128  23140 S   1.6  0.2 103:00.02 /usr/bin/gnome-shell                                                                                
+14011 ldb385    20   0   54544   5844   3144 S   1.6  0.0   0:04.01 top                                                                                                 
+ 6002 fas216    20   0 1869688 115848  33544 S   0.7  0.1 453:15.62 /usr/share/atom/atom                                                                                
+ 9965 rjl921    20   0  104760  35324  22520 S   0.7  0.0 620:30.46 .bin/consul agent -server -bootstrap-expect=3 -config-dir=/student/rjl921/fun/conf.d -config-dir=/+ 
+ 4205 fas216    20   0  950008  19340   4984 S   0.3  0.0 107:10.32 /usr/libexec/gsd-color                                                                              
+18027 zzz187    20   0  607288  16908   2324 S   0.3  0.0 135:11.09 /usr/libexec/gsd-color                                                                              
+18259 nic014    20   0 1420244  19884   2060 S   0.3  0.0   5:39.76 Xvnc :12 -auth .Xauthority -geometry 3840x1080 -depth 32 -rfbauth /student/nic014/.vnc/sesman_pass+ 
+19213 nic014    20   0 36.576g    348      8 S   0.3  0.0  25:40.10 /bin/java -classpath lib/BrowserLauncher2-1.3.jar:lib/animal-sniffer-annotations-1.14.jar:lib/anno+ 
+21221 nic014    20   0 1452272   2156    784 S   0.3  0.0   7:46.12 Xvnc :17 -auth .Xauthority -geometry 1680x1050 -depth 32 -rfbauth /student/nic014/.vnc/sesman_pass+ 
+21646 gdm       20   0  961136   8920   1560 S   0.3  0.0  35:04.08 /usr/libexec/gsd-color                                                                              
+21996 nic014    20   0 36.870g  38892   4596 S   0.3  0.0  42:17.13 /bin/java -classpath lib/BrowserLauncher2-1.3.jar:lib/animal-sniffer-annotations-1.14.jar:lib/anno+ 
+47165 oster     20   0  958744  16636   2124 S   0.3  0.0 118:14.21 /usr/libexec/gsd-color                                                                              
+    1 root      20   0  247068   8140   3772 S   0.0  0.0   5:38.92 /usr/lib/systemd/systemd --system --deserialize 43                                                  
+    2 root      20   0       0      0      0 S   0.0  0.0   0:03.68 [kthreadd]                                                                                          
+    3 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 [rcu_gp]                                                                                            
+    5 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 [kworker/0:0H]                                                                                      
+    6 root      20   0       0      0      0 I   0.0  0.0   0:00.00 [kworker/u96:0]                                                                                     
+    8 root       0 -20       0      0      0 I   0.0  0.0   0:00.00 [mm_percpu_wq]                                                                                      
+    9 root      20   0       0      0      0 S   0.0  0.0   0:14.27 [ksoftirqd/0]                                                                                       
+   10 root      20   0       0      0      0 I   0.0  0.0  26:37.68 [rcu_sched]                                                                                         
+   11 root      20   0       0      0      0 I   0.0  0.0   0:00.00 [rcu_bh]                                                                                            
+   12 root      rt   0       0      0      0 S   0.0  0.0   0:02.51 [migration/0]                                                                                       
+   13 root      rt   0       0      0      0 S   0.0  0.0   0:01.40 [watchdog/0]                                                                                        
+   14 root      20   0       0      0      0 S   0.0  0.0   0:00.00 [cpuhp/0]                                                                                           
+   15 root      20   0       0      0      0 S   0.0  0.0   0:00.00 [cpuhp/1]                                                                                           
+   16 root      rt   0       0      0      0 S   0.0  0.0   0:04.91 [watchdog/1]                                                                                        
+   17 root      rt   0       0      0      0 S   0.0  0.0   0:03.66 [migration/1]                                                                                       
+###################################################################################
+
+3.
+Go Huskies\0
+
+4a)
+tck290@tux7:~/lab7_214> cp example_4.c example_4_modified.c 
+tck290@tux7:~/lab7_214> diff example_4.c example_4_modified.c 
+18c18
+< 
+---
+>   printf("long int: %zd bytes\n", sizeof(long int));
+
+b)
+tck290@tux7:~/lab7_214> gcc -o ex4_mod -Wall -Wextra example_4_modified.c 
+tck290@tux7:~/lab7_214> ./ex4_mod 
+char:     1 bytes
+short:    2 bytes
+int:      4 bytes
+unsigned: 4 bytes
+float:    4 bytes
+double:   8 bytes
+long int: 8 bytes
+
+5.
+tck290@tux7:~/lab7_214> diff q5.c q5_fixed.c 
+11c11
+<     char* mystr;                       // destination string
+---
+>     char mystr[BUFSIZE];                       // destination string
+
+tck290@tux7:~/lab7_214> gcc -o q5_fixed -Wall -Wextra q5_fixed.c 
+tck290@tux7:~/lab7_214> ./q5_fixed 
+Hello, World!
+
+
+6a)
+0x07ffedd1bc378
+b)
+0x07ffedd1bc37C
+c)
+0x07ffedd1bc380
+d)
+0x07ffedd1bc380
+e)
+8 -> increment *ptr then dereference, printing out us[3]
+
+
+
+

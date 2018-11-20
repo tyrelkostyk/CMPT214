@@ -1,0 +1,125 @@
+# program should fail, limit exceeded
+bash-4.4$ ./time_calc conv 3155760000
+error: number of seconds outside of valid range
+# test successful
+
+# program should fail, limit exceeded
+bash-4.4$ ./time_calc conv 99y11n30d10h30m00s
+error: time range exceeded
+# test successful
+
+# program should fail, not enough arguments
+bash-4.4$ ./time_calc conv 
+error: too few arguments
+Usage: time_calc conv <time>
+       time_calc {add,subt,comp} <time1> <time2>
+# test successful
+
+# program should fail, too many arguments
+bash-4.4$ ./time_calc conv 1y1n1d1h1m1s 34277461
+error: too many arguments
+Usage: time_calc conv <time>
+       time_calc {add,subt,comp} <time1> <time2>
+# test successful
+
+# program should fail, no command given
+bash-4.4$ ./time_calc '2y2n2d2h2m2s' '1y 1n 1d 1h 1m 1s'
+error: command '2y2n2d2h2m2s' not recognized
+Usage: time_calc conv <time>
+       time_calc {add,subt,comp} <time1> <time2>
+# test successful
+
+# program should fail, too many arguments
+bash-4.4$ ./time_calc comp '2y2n2d2h2m2s' '1y 1n 1d 1h 1m 1s' 146834
+error: too many arguments
+Usage: time_calc conv <time>
+       time_calc {add,subt,comp} <time1> <time2>
+# test successful
+
+# program should fail, time outside of range
+bash-4.4$ ./time_calc conv '99y 11n 30d 23h 59m 58s'
+error: time range exceeded
+# test successful
+
+# program should fail, malformed time spec
+bash-4.4$ ./time_calc conv  0n0d0h0m0s
+error: '0n0d0h0m0s' is not a valid time spec
+# test successful
+
+# program should fail, malformed time spec
+bash-4.4$ ./time_calc conv 'foobar99y11n30d23h59m57s'
+error: 'foobar99y11n30d23h59m57s' is not a valid time spec
+# test successful
+
+# program should fail, time outside of range
+bash-4.4$ ./time_calc conv '100y 11n 30d 23h 59m 54s'
+error: years outside of valid range
+# test successful
+
+# program should fail, time field outside of range
+bash-4.4$ ./time_calc conv '1y 100n 30d 23h 59m 53s'
+error: months outside of valid range
+# test successful
+
+# program should fail, malformed time spec
+bash-4.4$ ./time_calc conv  99y11n30d23h59m57sfoobar
+error: '99y11n30d23h59m57sfoobar' is not a valid time spec
+# test successful
+
+# program should fail, malformed time spec
+bash-4.4$ ./time_calc conv  0s0m0h
+error: '0s0m0h' is not a valid time spec
+# test successful
+
+# program should fail, time field outside of range
+bash-4.4$ ./time_calc conv '1y 1n 30d 23h 59m 100s  '
+error: seconds outside of valid range
+# test successful
+
+# program should fail, malformed time spec
+bash-4.4$ ./time_calc conv '-1y 2n 3d 4h 5m 6s'
+error: years outside of valid range
+# test successful
+
+# program should fail, malformed time spec
+bash-4.4$ ./time_calc conv '1y -2n 3d 4h 5m 6s'
+error: months outside of valid range
+# test successful
+
+# program should fail, malformed number of seconds
+bash-4.4$ ./time_calc conv -100
+error: number of seconds outside of valid range
+# test successful
+
+# program should fail, addition would result in exceeding limit
+bash-4.4$ ./time_calc add 99y11n30d10h29m59s 1
+error: time range exceeded
+# test successful
+
+# program should fail, would result in negative time value
+bash-4.4$ ./time_calc subt '1y 1n 1d 1h 1m 0s' 34277461
+error: negative time not allowed
+# test successful
+
+# program should fail, addition would result in exceeding limit
+bash-4.4$ ./time_calc add 69y1n3d1h29m45s 74y1n1d1h5m16s
+error: time range exceeded
+# test successful
+
+# program should fail, second argument is malformed
+bash-4.4$ ./time_calc comp 345 674q
+error: problem with input '674q' as number of seconds
+error: problem with input time value
+Usage: time_calc conv <time>
+       time_calc {add,subt,comp} <time1> <time2>
+# test successful
+
+# program should fail, fields of time spec are out-of-order
+bash-4.4$ ./time_calc add 3678 6n2y4h36s0m13d
+error: '6n2y4h36s0m13d' is not a valid time spec
+error: problem with input time value
+Usage: time_calc [conv <time>]
+       time_calc [{add,subt,comp} <time1> <time2>]
+# test successful
+
+bash-4.4$ 

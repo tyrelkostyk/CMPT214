@@ -1,0 +1,35 @@
+CMPT214 Assignment 2 Question 3 - Annotated Test Log
+Tyrel Kostyk, tck290, 11216033
+
+### can "make" without errors or warnings
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ make
+gcc -o a.out -Wall -Wextra string_length.c
+
+### Test simple string "hello" (5 chars long)
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./a.out "hello"
+input string: 'hello'
+Calculating string length iteratively: 5
+Calculating string length recursively returning a value: 6
+Calculating string length recursively using a global variable: 5
+
+### Test Full range of numeric characters (10 chars)
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./a.out "1234567890"
+input string: '1234567890'
+Calculating string length iteratively: 10
+Calculating string length recursively returning a value: 11
+Calculating string length recursively using a global variable: 10
+
+### Test w/ null character hidden in string (SHOULDN'T end string early. 12 chars)
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./a.out "1234567890\0"
+input string: '1234567890\0'
+Calculating string length iteratively: 12
+Calculating string length recursively returning a value: 13
+Calculating string length recursively using a global variable: 12
+
+### Test long string w/ null & newline chars. 33 chars
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./a.out "HELLLOOOOOOOOOOOO \0 \N WOOOOORLD"
+input string: 'HELLLOOOOOOOOOOOO \0 \N WOOOOORLD'
+Calculating string length iteratively: 33
+Calculating string length recursively returning a value: 34
+Calculating string length recursively using a global variable: 33
+

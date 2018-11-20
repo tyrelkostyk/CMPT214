@@ -1,0 +1,75 @@
+CMPT214 Assignment 2 Question 2 - Annotated Test Log for fib.c
+Tyrel Kostyk, tck290, 11216033
+
+##############################
+
+
+## Testing 1's & 0's
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 0
+Fibbonacci Result: 0
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 1
+Fibbonacci Result: 1
+
+## Testing acceptable positive inputs
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 6
+Fibbonacci Result: 8
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 22
+Fibbonacci Result: 17711
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 34
+Fibbonacci Result: 5702887
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 46
+Fibbonacci Result: 1836311903
+
+## Testing Positive Overflow error handling
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 47
+Error: Int Overflow when n = 47!
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: 48
+Error: Int Overflow when n = 48!
+
+
+## Testing acceptable negative values
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -1
+Fibbonacci Result: 1
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -3
+Fibbonacci Result: 2
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -10
+Fibbonacci Result: -55
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -22
+Fibbonacci Result: -17711
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -23
+Fibbonacci Result: 28657
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -31
+Fibbonacci Result: 1346269
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -32
+Fibbonacci Result: -2178309
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -46
+Fibbonacci Result: -1836311903
+
+## Testing Negative Overflow error handling
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -47
+Error: Int Overflow when n = -47!
+tyrel@tyrel-ThinkPad-Edge-E440 ~/school-repos/CMPT214/a2 $ ./fib 
+Enter an integer: -48
+Error: Int Overflow when n = -48!
+
+
+
+
+

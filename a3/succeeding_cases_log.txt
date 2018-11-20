@@ -1,0 +1,80 @@
+# program should succeed, output '0'
+bash-4.4$ ./time_calc conv 0y0n0d0h0m0s
+0
+# test successful
+
+# program should succeed, output '0'
+bash-4.4$ ./time_calc conv 00y00n00d00h00m00s
+0
+# test successful
+
+# program should succeed, output '37091100'
+bash-4.4$ ./time_calc conv '01y 02n  03d   4h     5m00s '
+37091100
+# test successful
+
+# program should succeed, output '0y 0n 0d 0h23m20s'
+bash-4.4$ ./time_calc conv '  1400'
+ 0y 0n 0d 0h23m20s
+# test successful
+
+# program should succeed, output '34277461'
+bash-4.4$ ./time_calc conv 1y1n1d1h1m1s
+34277461
+# test successful
+
+# program should succeed, output '1y 1n 1d 1h 1m 1s'
+bash-4.4$ ./time_calc conv 34277461
+ 1y 1n 1d 1h 1m 1s
+# test successful
+
+# program should succeed, output '3155759999'
+bash-4.4$ ./time_calc conv 99y11n30d10h29m59s
+3155759999
+# test successful
+
+# program should succeed, output '99y11n30d10h29m59s'
+bash-4.4$ ./time_calc conv 3155759999
+99y11n30d10h29m59s
+# test successful
+
+# program should succeed, output '1y 1n 1d 1h 1m 2s'
+bash-4.4$ ./time_calc add 34277461 1
+ 1y 1n 1d 1h 1m 2s
+# test successful
+
+# program should succeed, output '1y 1n 1d 1h 1m 0s'
+bash-4.4$ ./time_calc subt 34277461 1
+ 1y 1n 1d 1h 1m 0s
+# test successful
+
+# program should succeed, times are equal
+bash-4.4$ ./time_calc comp 34277461 '1y 1n 1d 1h 1m 1s'
+equal
+# test successful
+
+# program should succeed, first time is less
+bash-4.4$ ./time_calc comp 34277460 '1y 1n 1d 1h 1m 1s'
+less
+# test successful
+
+# program should succeed, first time is greater
+bash-4.4$ ./time_calc comp 44277461 '0y 1n 1d 1h 1m 0s'
+greater
+# test successful
+
+# program should succeed, output '1y 1n 1d 1h 1m 1s'
+bash-4.4$ ./time_calc subt '2y2n2d2h2m2s' '1y 1n 1d 1h 1m 1s'
+ 1y 1n 1d 1h 1m 1s
+# test successful
+
+# program should succeed, output '1y 0n 0d 0h 0m 0s'
+bash-4.4$ ./time_calc conv 31557600
+ 1y 0n 0d 0h 0m 0s
+# test successful
+
+# program should succeed, output '0y 1n 0d 0h 0m 0s'
+bash-4.4$ ./time_calc conv 2629800
+ 0y 1n 0d 0h 0m 0s
+# test successful
+
