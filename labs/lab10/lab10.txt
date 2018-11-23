@@ -1,0 +1,188 @@
+CMPT214 Lab 10 - Friday Nov 23 2018
+Tyrel Kostyk, tck290, 11216033
+
+#################################################
+
+1.
+a)
+tck290@tux5:~/214/lab10> diff datatype_sizes.incomplete.c datatype_sizes.c
+11,15c11,15
+<   printf( "sizeof int32_t is %zd\n", /* fill in argument */ );
+<   printf( "sizeof uint64_t is %zd\n", /* fill in argument */ );
+<   printf( "sizeof long int is %zd\n", /* fill in argument */ );
+<   printf( "sizeof long double is %zd\n", /* fill in argument */ );
+<   printf( "sizeof pointer-to-void is %zd\n", /* fill in argument */ );
+---
+>   printf( "sizeof int32_t is %zd\n", sizeof(int32_t) );
+>   printf( "sizeof uint64_t is %zd\n", sizeof(uint64_t) );
+>   printf( "sizeof long int is %zd\n", sizeof(long int) );
+>   printf( "sizeof long double is %zd\n", sizeof(long double)  );
+>   printf( "sizeof pointer-to-void is %zd\n", sizeof(void *) );
+
+b)
+tck290@tux5:~/214/lab10> gcc -m32 -Wall -Wextra -o 32bit_sizes datatype_sizes.c
+tck290@tux5:~/214/lab10> gcc -m64 -Wall -Wextra -o 64bit_sizes datatype_sizes.c
+
+c)
+tck290@tux5:~/214/lab10> file 32bit_sizes 
+32bit_sizes: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=7d5bb3cd8e508a1b8d47b5bd6cbce32dc2a8b5a6, not stripped
+
+tck290@tux5:~/214/lab10> file 64bit_sizes 
+64bit_sizes: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=3c46427315f0fc1e70f656364bc8b81354465c4c, not stripped
+
+-> This output makes sense bases off the -m32/-m64 gcc arguments
+
+d)
+tck290@tux5:~/214/lab10> ./32bit_sizes 
+sizeof int32_t is 4
+sizeof uint64_t is 8
+sizeof long int is 4
+sizeof long double is 12
+sizeof pointer-to-void is 4
+tck290@tux5:~/214/lab10> ./64bit_sizes 
+sizeof int32_t is 4
+sizeof uint64_t is 8
+sizeof long int is 8
+sizeof long double is 16
+sizeof pointer-to-void is 8
+
+-> No, No, No. All depend on the system architecture
+
+e)
+yes, yes.
+
+f)
+tck290@tux5:~/214/lab10> uname -p
+x86_64
+
+
+2.
+a)
+tck290@tux5:~/214/lab10> diff test_math.incomplete.c test_math.c
+17c17
+<     printf( "sin(%f) is %f\n", value, /* provide function call */ );
+---
+>     printf( "sin(%f) is %f\n", value, sin(value) );
+
+b)
+tck290@tux5:~/214/lab10> gcc -lm -Wall -Wextra -o test_math test_math.c
+tck290@tux5:~/214/lab10> ./test_math 3.14159
+sin(3.141590) is 0.000003
+tck290@tux5:~/214/lab10> ./test_math 1.570796
+sin(1.570796) is 1.000000
+tck290@tux5:~/214/lab10> ./test_math 0
+sin(0.000000) is 0.000000
+
+
+3.
+a)
+tck290@tux5:~/214/lab10> gcc -Wall -Wextra -c q3_calc.c 
+
+b)
+tck290@tux5:~/214/lab10> diff q3_main.incomplete.c q3_main.c 
+9c9
+< 
+---
+> #include "q3_calc.h"
+
+c)
+tck290@tux5:~/214/lab10> gcc -Wall -Wextra -c q3_main.c 
+
+d)
+tck290@tux5:~/214/lab10> gcc q3_calc.o q3_main.o -o q3
+tck290@tux5:~/214/lab10> ./q3 
+Performing the following calculations on 5.000000 and 6.000000
+addition:  11.000000
+subtraction: -1.000000  
+Multiplication: 30.000000
+Power: 15625.000000
+
+
+4.
+'.FEATURES'
+     Expands to a list of special features supported by this version of
+     'make'.  Possible values include, but are not limited to:
+
+     'archives'
+          Supports 'ar' (archive) files using special file name syntax.
+          *Note Using 'make' to Update Archive Files: Archives.
+
+     'check-symlink'
+          Supports the '-L' ('--check-symlink-times') flag.  *Note
+          Summary of Options: Options Summary.
+
+     'else-if'
+          Supports "else if" non-nested conditionals.  *Note Syntax of
+          Conditionals: Conditional Syntax.
+
+     'jobserver'
+          Supports "job server" enhanced parallel builds.  *Note
+          Parallel Execution: Parallel.
+
+     'oneshell'
+          Supports the '.ONESHELL' special target.  *Note Using One
+          Shell: One Shell.
+
+     'order-only'
+          Supports order-only prerequisites.  *Note Types of
+          Prerequisites: Prerequisite Types.
+
+     'second-expansion'
+          Supports secondary expansion of prerequisite lists.
+
+     'shortest-stem'
+          Uses the "shortest stem" method of choosing which pattern, of
+          multiple applicable options, will be used.  *Note How Patterns
+          Match: Pattern Match.
+
+     'target-specific'
+          Supports target-specific and pattern-specific variable
+          assignments.  *Note Target-specific Variable Values:
+          Target-specific.
+
+     'undefine'
+          Supports the 'undefine' directive.  *Note Undefine
+          Directive::.
+
+     'guile'
+          Has GNU Guile available as an embedded extension language.
+          *Note GNU Guile Integration: Guile Integration.
+
+     'load'
+          Supports dynamically loadable objects for creating custom
+          extensions.  *Note Loading Dynamic Objects: Loading Objects.
+
+
+5.
+a)
+tck290@tux5:~/214/lab10> file q3
+q3: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=82b5b49044d18e0a901cfc0004877108ad1d65c4, not stripped
+tck290@tux5:~/214/lab10> ls -s --block-size=1 q3
+12288 q3*
+
+b)
+tck290@tux5:~/214/lab10> gcc -static q3_calc.o q3_main.o -o q3_static
+
+c)
+tck290@tux5:~/214/lab10> ls -s --block-size=1 q3_static 
+757760 q3_static*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+CMPT214 Assignment 3 - Nov 21st 2018
+Tyrel Kostyk, tck290, 11216033
+
+External Documentation for time_calc C program
+
+############################################################
+
+This is a simple program which takes in one or two inputs that represent a 
+time value (either in seconds or broken down into years, hours, etc), and then
+performs a single operation on it/them, sending the output to stdout. 
+
+The basic usage is as follows:
+$ ./time_calc conv <time>
+or
+$ ./time_calc {add,subt,comp} <time1> <time2>
+or
+$ ./time_calc help
+
+The two accepted time formats:
+seconds: 0-3155759999
+time_spec: n1y n2n n3d n4h n5m n6s, where:
+    n1 is years, less than 100
+    n2 is months, less than 12
+    n3 is days, less than 31
+    n4 is hours, less than 24
+    n5 is minutes, less than 60
+    n6 is seconds, less than 60
+    The corresponding maximum time_spec is 99y 11n 30d 10h 29m 59s
+
+
+If the user specifies the conv option, they must also give a single valid time
+input as well. 
+
+If the user specifies an add, subt, or comp option, they must also provide 2 
+valid time arguments as well.
+
+Failing to input a valid amount of arguments, or by just entering the help 
+argument, the program will display the "basic usage" as you can see above.
+
+Each of the options produces the following behaviour:
+conv: Takes the input, and (if its valid) converts it to the opposite format
+    and prints it on stdout. i.e. if given a valid seconds format, it will 
+    print the equivalent time_spec representation to the console.
+
+add: Takes the inputs, checks validity & converts them both to seconds. Then 
+    it adds them together and (if the result is less than 3155760000) prints 
+    the result to the console in time_spec format.
+
+subt: Takes in the inputs, and again converts to seconds, then subtracts time2 
+    from time1. If the result is zero or positive, it once again prints the 
+    result in time_spec format to stdout.
+
+comp: After taking in & validating/converting the inputs, it checks to see if 
+    time1 is less than, greater than, or equal to time2. Depending on which 
+    case is true, it prints either "less", "greater", or "equal" to stdout.
+
+At any point in the program's operation, if an input fails a check (illegal
+CHARs in input, too many seconds, negative result from subtraction, etc) the 
+program will output a situation-specific error directed to stderr (aka either 
+the console or a file) and cease operation. Since there are multiple layers of 
+checks and functions, a single incorrect input may produce multiple errors.
+
+
