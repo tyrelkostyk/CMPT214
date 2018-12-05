@@ -1,0 +1,56 @@
+# what is my shell's PID?
+bash-4.4$ echo $$
+18842
+
+# make sure variable MYVAR is not set
+bash-4.4$ unset MYVAR
+
+# confirm that variable MYVAR is not set
+bash-4.4$ echo $MYVAR
+
+# invoke script10.sh with MYVAR not defined
+bash-4.4$ ./script10.sh
+this is script ./script10.sh with pid 18953
+value of MYVAR is ""
+changing the value of MYVAR to 18953
+value of MYVAR is now "18953"
+# neither parent nor child knew about MYVAR.  However, 
+# MYVAR in the child could be set to a value.
+bash-4.4$ echo $MYVAR
+
+# the child's value of MYVAR is not know to the parent.
+
+# invoking script10.sh with MYVAR defined, but as just a shell variable
+bash-4.4$ MYVAR=December
+bash-4.4$ echo $MYVAR
+December
+bash-4.4$ ./script10.sh
+this is script ./script10.sh with pid 18954
+value of MYVAR is ""
+changing the value of MYVAR to 18954
+value of MYVAR is now "18954"
+# the child initially did not know about MYVAR.  However, 
+# MYVAR in the child could be set to a value.
+bash-4.4$ echo $MYVAR
+December
+# the value of MYVAR in the child is not known by the parent; the
+# parent's setting of MYVAR is unchanged.
+
+# invoking script10.sh with MYVAR defined as an environment variable
+bash-4.4$ export MYVAR=Christmas
+bash-4.4$ echo $MYVAR
+Christmas
+bash-4.4$ ./script10.sh
+this is script ./script10.sh with pid 18955
+value of MYVAR is "Christmas"
+changing the value of MYVAR to 18955
+value of MYVAR is now "18955"
+# the child knew about MYVAR; a copy of the environment variable
+# was passed to the child.  Further, 
+# MYVAR in the child could be set to a new value.
+bash-4.4$ echo $MYVAR
+Christmas
+# the value of MYVAR in the child does not affect the value of the
+# original version in the parent.  
+
+bash-4.4$ 

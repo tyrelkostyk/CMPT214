@@ -1,0 +1,21 @@
+bash-4.4$ ./script4.sh one 2 three 4
+program was invoked by "./script4.sh"
+there were 4 arguments given on the command line
+argument 1 is "one"
+argument 2 is "2"
+turning on "-v"
+echo argument 3 is \"$3\"
+argument 3 is "three"
+echo argument 109 is \"${109}\"
+argument 109 is ""
+bash-4.4$ sh ./script4.sh one 2 three 4
+program was invoked by "./script4.sh"
+there were 4 arguments given on the command line
+argument 1 is "one"
+argument 2 is "2"
+turning on "-v"
+echo argument 3 is \"$3\"
+argument 3 is "three"
+echo argument 109 is \"${109}\"
+argument 109 is ""
+bash-4.4$ 

@@ -1,0 +1,30 @@
+# Invoke the script with a command-line argument.  egrep (within the
+# script) will then operate on that file
+bash-4.4$ ./script12.sh /usr/share/dict/words
+       5
+
+# let's turn on some debugging to see what took place
+bash-4.4$ sh -x ./script12.sh /usr/share/dict/words
++ egrep 'cat.*cat' /usr/share/dict/words
++ wc -l
+       5
+# Note that egrep was provided with a file to operate on.
+
+# invoke the script with no command-line arguments, but with input
+# redirected.  egrep (within the script) will then operate on stdin
+bash-4.4$ ./script12.sh < /usr/share/dict/words
+       5
+
+# let's turn on some debugging to see what took place
+bash-4.4$ sh -x ./script12.sh < /usr/share/dict/words
++ egrep 'cat.*cat'
++ wc -l
+       5
+# Above, since egrep was invoked with file argument, it read from
+# standard input.  That standard input was inherited from the parent
+# process, the one executing the script.  That process had its
+# standard input redirected to file /usr/share/dict/words.
+# Therefore egrep will be reading from /usr/share/dict/words.
+# wc is also invoked without a file argument, so it will also read
+# from standard input.  However, that will be a pipe connecting
+# it to the egrep command.

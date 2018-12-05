@@ -1,0 +1,4 @@
+bash-4.4$ ./script14.sh 15
+one more than 15 is 16
+bash-4.4$ sh ./script14.sh -7
+one more than -7 is -6

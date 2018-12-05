@@ -1,0 +1,260 @@
+CMPT 214 Lab 11 - Sun Dec 2nd 2018
+Tyrel Kostyk, tck290, 11216033
+
+--------------------------------------------
+
+1.
+Compiling & Running Program:
+tck290@tux8:~/214/lab11> gcc -Wall -Wextra -o q1 q1.c 
+tck290@tux8:~/214/lab11> ./q1 
+a marigold is a flower
+a standard tomato has 22 calories
+don't cook your brocolli more than 2.50 minutes
+
+Diff of original & final programs:
+tck290@tux8:~/214/lab11> diff q1_incomplete.c q1.c 
+17c17
+< typedef enum /* replace this comment with the rest of the definition of grocery_t */
+---
+> typedef enum { flower, fruit, vegetable } grocery_t; 
+82,83c82,83
+<             printf( "a %s is a flower\n", grocery_pt->flr.name );
+<             /* replace with the most appropriate, correct statement */
+---
+>             printf( "a %s is a flower\n", groceries[i].flr.name );
+> 	    break;
+86,87c86
+<                      groceries[i].frt.name,
+< /* replace with expression that is the calories member of the frt interpretation of groceries[i] */
+---
+>                      groceries[i].frt.name, groceries[i].frt.calories
+92,93c91
+<                      grocery_pt->veg.name, 
+< /* replace with expression that is the cooking_time member of the veg interpretation of the union pointed to by groceries_pt */
+---
+>                      grocery_pt->veg.name, grocery_pt->veg.cooking_time
+
+
+
+
+2.
+a)
+tck290@tux6:~/214/lab11> curl http://www.acme.com/software/factor/factor_02Jun2016.tar.gz --output factor_02Jun2016.tar.gz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 28040  100 28040    0     0   173k      0 --:--:-- --:--:-- --:--:--  173k
+
+b)
+tck290@tux6:~/214/lab11> tar -zxvf factor_02Jun2016.tar.gz 
+factor/
+factor/Makefile
+factor/factor.1
+factor/factor.c
+factor/low_primes.h
+tck290@tux6:~/214/lab11> cd factor/
+
+c)
+tck290@tux6:~/214/lab11/factor> make -n 
+cc -O -ansi -pedantic -U__STRICT_ANSI__ -Wall -Wpointer-arith -Wshadow -Wcast-qual -Wcast-align -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wno-long-long factor.c -s -o factor
+
+d)
+tck290@tux8:~/214/lab11/factor> diff Makefile Makefile.org 
+3c3
+< LDFLAGS =	-s	
+---
+> LDFLAGS = 
+
+e)
+tck290@tux8:~/214/lab11/factor> make
+cc -O -ansi -pedantic -U__STRICT_ANSI__ -Wall -Wpointer-arith -Wshadow -Wcast-qual -Wcast-align -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wredundant-decls -Wno-long-long factor.c -s	 -o factor
+
+tck290@tux8:~/214/lab11/factor> ./factor 987654321
+987654321 = 3^2 17^2 379721
+
+tck290@tux8:~/214/lab11/factor> ./factor 2. 
+20 = 2^2 5
+21 = 3 7
+22 = 2 11
+23 = 23
+24 = 2^3 3
+25 = 5^2
+26 = 2 13
+27 = 3^3
+28 = 2^2 7
+29 = 29
+
+tck290@tux8:~/214/lab11/factor> ./factor 101-105 
+101 = 101
+102 = 2 3 17
+103 = 103
+104 = 2^3 13
+105 = 3 5 7
+
+
+
+3. Full SVN logs are at the end of Q3
+a)
+tck290@tux8:~> svn info https://svn.cs.usask.ca/svn/student/214/tck290 
+Path: tck290
+URL: https://svn.cs.usask.ca/svn/student/214/tck290
+Relative URL: ^/
+Repository Root: https://svn.cs.usask.ca/svn/student/214/tck290
+Repository UUID: 60f1f70a-6235-49be-b793-49886d2d5840
+Revision: 0
+Node Kind: directory
+Last Changed Rev: 0
+Last Changed Date: 2018-11-18 12:29:14 -0600 (Sun, 18 Nov 2018)
+
+-- set svnDIR=https://svn.cs.usask.ca/svn/student/214/tck290 --
+
+b)
+tck290@tux8:~> svn mkdir $svnDIR/lab11 
+Committing transaction...
+Committed revision 1.
+tck290@tux8:~> svn mkdir $svnDIR"/lab11/trunk"
+Committing transaction...
+Committed revision 2.
+tck290@tux8:~> svn mkdir $svnDIR"/lab11/branches"
+Committing transaction...
+Committed revision 3.
+tck290@tux8:~> svn mkdir $svnDIR"/lab11/tags"
+Committing transaction...
+Committed revision 4.
+
+c)
+tck290@tux8:~> svn list -R $svnDIR
+lab11/
+lab11/branches/
+lab11/tags/
+lab11/trunk/
+
+d)
+tck290@tux8:~> mkdir lab11_q3
+tck290@tux8:~> cd lab11_q3/
+tck290@tux8:~/lab11_q3> svn checkout $svnDIR/lab11/trunk
+Checked out revision 4.
+
+e)
+tck290@tux8:~/lab11_q3> cd trunk/
+tck290@tux8:~/lab11_q3/trunk> ls   
+tck290@tux8:~/lab11_q3/trunk> echo "This is file 1" > file1.txt
+
+f)
+tck290@tux8:~/lab11_q3/trunk> svn add file1.txt
+
+A         file1.txt
+tck290@tux8:~/lab11_q3/trunk> ls
+file1.txt
+tck290@tux8:~/lab11_q3/trunk> svn list $svnDIR/lab11/trunk
+
+g)
+tck290@tux8:~/lab11_q3/trunk> svn commit 
+Adding         file1.txt
+Transmitting file data .done
+Committing transaction...
+Committed revision 5.
+
+h)
+tck290@tux8:~/lab11_q3/trunk> svn status -v
+                 4        2 tck290@USASK.CA .
+                 5        5 tck290@USASK.CA file1.txt
+tck290@tux8:~/lab11_q3/trunk> echo "This is file 2" > file2.txt
+
+i)
+tck290@tux8:~/lab11_q3/trunk> svn status -v
+                 4        2 tck290@USASK.CA .
+                 5        5 tck290@USASK.CA file1.txt
+?                                        file2.txt
+
+j)
+tck290@tux8:~/lab11_q3/trunk> svn add file2.txt
+A         file2.txt
+tck290@tux8:~/lab11_q3/trunk> svn status -v
+                 4        2 tck290@USASK.CA .
+                 5        5 tck290@USASK.CA file1.txt
+A                -       ?   ?           file2.txt
+    - Different output refers to fact that repo doesn't know about file2.txt's existence, but knows it's to be added in the next commit
+
+k)
+tck290@tux8:~/lab11_q3/trunk> svn commit
+Adding         file2.txt
+Transmitting file data .done
+Committing transaction...
+Committed revision 6.
+tck290@tux8:~/lab11_q3/trunk> svn status -v
+                 4        2 tck290@USASK.CA .
+                 5        5 tck290@USASK.CA file1.txt
+                 6        6 tck290@USASK.CA file2.txt
+    - file2.txt is now in the repo, and was added/committed in REV 6
+
+l)
+tck290@tux8:~/lab11_q3/trunk> echo "This is the second line of file 1" >> file1.txt 
+tck290@tux8:~/lab11_q3/trunk> svn status -v
+                 4        2 tck290@USASK.CA .
+M                5        5 tck290@USASK.CA file1.txt
+                 6        6 tck290@USASK.CA file2.txt
+    - Indicates that file1.txt has new modifications not recognized by the repo
+
+m)
+tck290@tux8:~/lab11_q3/trunk> svn update 
+Updating '.':
+At revision 6.
+tck290@tux8:~/lab11_q3/trunk> svn commit 
+Sending        file1.txt
+Transmitting file data .done
+Committing transaction...
+Committed revision 7.
+
+n)
+tck290@tux8:~/lab11_q3/trunk> svn log -v file1.txt 
+------------------------------------------------------------------------
+r7 | tck290@USASK.CA | 2018-11-30 10:19:50 -0600 (Fri, 30 Nov 2018) | 2 lines
+Changed paths:
+   M /lab11/trunk/file1.txt
+
+Modified file1.txt, added 2nd line of text
+
+------------------------------------------------------------------------
+r5 | tck290@USASK.CA | 2018-11-30 10:05:27 -0600 (Fri, 30 Nov 2018) | 2 lines
+Changed paths:
+   A /lab11/trunk/file1.txt
+
+Add file1.txt to lab11 trunk
+
+------------------------------------------------------------------------
+
+o)
+tck290@tux8:~/lab11_q3/trunk> svn log -v
+------------------------------------------------------------------------
+r6 | tck290@USASK.CA | 2018-11-30 10:14:31 -0600 (Fri, 30 Nov 2018) | 2 lines
+Changed paths:
+   A /lab11/trunk/file2.txt
+
+Added file2.txt to lab11 trunk branch
+
+------------------------------------------------------------------------
+r5 | tck290@USASK.CA | 2018-11-30 10:05:27 -0600 (Fri, 30 Nov 2018) | 2 lines
+Changed paths:
+   A /lab11/trunk/file1.txt
+
+Add file1.txt to lab11 trunk
+
+------------------------------------------------------------------------
+r2 | tck290@USASK.CA | 2018-11-30 09:50:13 -0600 (Fri, 30 Nov 2018) | 2 lines
+Changed paths:
+   A /lab11/trunk
+
+Created trunk subdir within lab11 dir
+
+------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

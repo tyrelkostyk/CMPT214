@@ -1,0 +1,31 @@
+# show PID of this shell (which will be the parent in the example)
+bash-4.4$ echo $$
+18842
+# make sure that MYLOCALVAR and MYENVVAR are not set to anything
+bash-4.4$ echo $MYLOCALVAR $MYENVVAR
+
+# define MYLOCALVAR as a local shell variable
+bash-4.4$ MYLOCALVAR=seventy-seven
+# define MYENVVAR as an environment variable
+bash-4.4$ export MYENVVAR=Ferrari
+# invoke the script as a command; i.e. execute it in a child process
+bash-4.4$ ./script11.sh
+this is script ./script11.sh with pid 18970
+value of MYLOCALVAR is ""
+setting MYLOCALVAR to local18970
+value of local variable MYLOCALVAR is now local18970
+value of MYENVVAR is "Ferrari"
+setting MYENVVAR to env18970
+value of environment variable MYENVVAR is now env18970
+# The child initially did not know about MYLOCALVAR.  However, 
+# MYLOCALVAR in the child could be set to a value.
+# The child knew about MYENVVAR; a copy of the environment variable
+# was passed to the child.  Further, 
+# MYENVVAR in the child could be set to a new value.
+
+bash-4.4$ echo $MYLOCALVAR
+seventy-seven
+bash-4.4$ echo $MYENVVAR
+Ferrari
+# Note that the settings to MYLOCALVAR and MYENVVAR in the child
+# were not propagated (back) to the parent.

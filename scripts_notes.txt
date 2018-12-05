@@ -1,0 +1,34 @@
+Thursday Nov 29th 2018 Lecture
+
+------------------------------------------
+SCRIPTS
+------------------------------------------
+
+'#!<interpreter>' at the START of a file specifies the start of a script
+
+'#!/bin/sh' - shell script
+'#!/bin/bash' - bash script
+
+Comments start with '#' in scripts
+
+sh is a slightly restricted version of bash
+
+Variable Expansion: ${var_name} ; think $HOME, etc
+predefined vars: ? = exit status of last command
+                 $ = PID of current process
+                 # = num of arguments (doesn't count command/script itself)
+                        - 1 less than argc
+                 @ = expands to all parameters
+
+user-defined Variables: VARNAME=value
+
+put 'set -x' anywhere in your script to beginning output what's executed
+    -v for verbose; just prints what's read (every line)
+
+Scripts spin up child processes to complete their commands
+
+Changes that a child process makes to env vars are unknown to parent processes
+
+running a shell script runs a child process of the shell script you are using(?)
+
+

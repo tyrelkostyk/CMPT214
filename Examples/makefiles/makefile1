@@ -1,0 +1,17 @@
+# Simple makefile for binary tree example
+# Author: Tony Kusalik
+
+bintree: test.o traversal.o tree.o bintree.o
+	gcc test.o traversal.o tree.o bintree.o -o bintree
+
+tree.o: tree.c tree.h
+	gcc -Wall -Wextra -c tree.c
+
+traversal.o: traversal.c traversal.h tree.h
+	gcc -Wall -Wextra -c traversal.c
+
+test.o: test.c test.h tree.h traversal.h
+	gcc -Wall -Wextra -c test.c
+
+bintree.o: bintree.c test.h
+	gcc -Wall -Wextra -c bintree.c

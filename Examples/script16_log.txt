@@ -1,0 +1,9 @@
+bash-4.4$ ./script16.sh 6
+determining if your number less than 0 (1-yes, 0-no):
+0
+bash-4.4$ ./script16.sh -6
+determining if your number less than 0 (1-yes, 0-no):
+1
+bash-4.4$ ./script16.sh 0
+determining if your number less than 0 (1-yes, 0-no):
+0

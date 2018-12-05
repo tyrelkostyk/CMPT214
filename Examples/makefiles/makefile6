@@ -1,0 +1,42 @@
+# makefile for binary tree example
+# Author: Tony Kusalik
+
+# Implicit rules
+#  - just like explicit rules, but without the "actions" portion
+#  - make(1) uses suffixes on files to infer what command to perform
+#  - operation then controlled by variables such as CC, CFLAGS, LDFLAGS, etc.
+
+# Flags for the C preprocessor
+CPPFLAGS =
+# Flags for the C compiler 
+#  (We aren't using this variable. Here for demonstration)
+CFLAGS = -Wall -Wextra
+# Flags to pass to the linker
+LDFLAGS = 
+
+.PHONY: all examples clean
+
+all: bintree examples
+
+BINTREE_OBJ = test.o traversal.o tree.o bintree.o
+
+bintree: $(BINTREE_OBJ)
+
+tree.o: tree.c tree.h
+traversal.o: traversal.c traversal.h tree.h
+test.o: test.c test.h tree.h traversal.h
+bintree.o: bintree.c test.h
+
+examples: example_80 example_82
+
+example_80: example_80.o
+example_80.o: example_80.c
+
+example_82: example_82.o
+example_82.o: example_82.c
+
+clean:
+	rm -f tree.o traversal.o test.o bintree.o
+	rm -f example_82.o example_80.o
+	rm -f bintree example_82 example_80
+

@@ -1,0 +1,32 @@
+bash-4.4$ sh -v script6.sh one 2 three 4
+#!/bin/sh
+# invoke with "sh -v script6.sh <args>" or "sh -x script6.sh <args>"
+
+echo program was invoked by \"$0\"
+program was invoked by "script6.sh"
+echo there were $# arguments given on the command line
+there were 4 arguments given on the command line
+echo argument 1 is \"$1\"
+argument 1 is "one"
+echo argument 2 is \"$2\"
+argument 2 is "2"
+echo turning off debugging
+turning off debugging
+set -
+argument 3 is "three"
+argument 109 is ""
+bash-4.4$ sh -x script6.sh one 2 three 4
++ echo program was invoked by '"script6.sh"'
+program was invoked by "script6.sh"
++ echo there were 4 arguments given on the command line
+there were 4 arguments given on the command line
++ echo argument 1 is '"one"'
+argument 1 is "one"
++ echo argument 2 is '"2"'
+argument 2 is "2"
++ echo turning off debugging
+turning off debugging
++ set -
+argument 3 is "three"
+argument 109 is ""
+bash-4.4$ 

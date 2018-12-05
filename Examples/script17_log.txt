@@ -1,0 +1,10 @@
+bash-4.4$ ./script17.sh 45
+++ expr 45 + 1
++ OUT=46
++ echo 1 + 45 is 46
+1 + 45 is 46
++ exit
+bash-4.4$
+# "expr 45 + 1" produced 46 on the standard ouput
+# this was used to substitute `expr $1 + 1` by 46
+# and then OUT=46 was executed

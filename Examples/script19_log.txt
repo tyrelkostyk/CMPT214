@@ -1,0 +1,36 @@
+# test case with multi-character command-line argument
+bash-4.4$ ./script19.sh hundreds
+the first command-line argument had 8 character(s) in it
+bash-4.4$ sh -x ./script19.sh hundreds
++ /bin/echo -n 'the first command-line argument had '
+the first command-line argument had ++ echo hundreds
+++ tr -d '\n'
+++ wc -c
++ echo 8 'character(s)' in it
+8 character(s) in it
++ exit
+
+# test case with a single-character command-line argument
+bash-4.4$ ./script19.sh x
+the first command-line argument had 1 character(s) in it
+bash-4.4$ sh -x ./script19.sh x
++ /bin/echo -n 'the first command-line argument had '
+the first command-line argument had ++ echo x
+++ tr -d '\n'
+++ wc -c
++ echo 1 'character(s)' in it
+1 character(s) in it
++ exit
+
+# test case with a no command-line argument
+bash-4.4$ ./script19.sh 
+the first command-line argument had 0 character(s) in it
+bash-4.4$ sh -x ./script19.sh
++ /bin/echo -n 'the first command-line argument had '
+the first command-line argument had ++ echo ''
+++ tr -d '\n'
+++ wc -c
++ echo 0 'character(s)' in it
+0 character(s) in it
++ exit
+bash-4.4$ 

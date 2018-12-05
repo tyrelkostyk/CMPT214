@@ -1,0 +1,8 @@
+bash-4.4$ sh script3.sh one two three
+program was invoked by "script3.sh"
+there were 3 arguments given on the command line
+arguments are one two three
+bash-4.4$ ./script3.sh one two three
+program was invoked by "./script3.sh"
+there were 3 arguments given on the command line
+arguments are one two three

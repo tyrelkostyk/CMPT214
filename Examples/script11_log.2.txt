@@ -1,0 +1,35 @@
+# show PID of this shell
+bash-4.4$ echo $$
+18842
+
+# make sure that MYLOCALVAR and MYENVVAR do not have values from a previous
+# example
+bash-4.4$ unset MYLOCALVAR MYENVVAR
+# confirm that MYLOCALVAR and MYENVVAR are not set to anything
+bash-4.4$ echo $MYLOCALVAR $MYENVVAR
+
+# define MYLOCALVAR as a local shell variable
+bash-4.4$ MYLOCALVAR=seventy-seven
+# define MYENVVAR as an environment variable
+bash-4.4$ export MYENVVAR=Ferrari
+# "source" the script; i.e. execute it in THIS process
+bash-4.4$ source ./script11.sh
+this is script bash with pid 18842
+value of MYLOCALVAR is "seventy-seven"
+setting MYLOCALVAR to local18842
+value of local variable MYLOCALVAR is now local18842
+value of MYENVVAR is "Ferrari"
+setting MYENVVAR to env18842
+value of environment variable MYENVVAR is now env18842
+# Note that it was the process (shell) with PID 18842 that was executing
+# the commands in the script, and not a child process.
+# Therefore the shell knew about the settings of MYLOCALVAR and
+# MYENVVAR.  Further, changing the value of those two variables
+# is known to the original shell.
+bash-4.4$ echo $MYLOCALVAR
+local18842
+bash-4.4$ echo $MYENVVAR
+env18842
+bash-4.4$ 
+# the settings of MYLOCALVAR and MYENVVAR are known to the shell which
+# "sourced" script11.sh

@@ -1,0 +1,20 @@
+bash-4.4$ ./script5.sh one 2 three 4
+program was invoked by "./script5.sh"
+there were 4 arguments given on the command line
+argument 1 is "one"
+argument 2 is "2"
+turning on "-x"
++ echo argument 3 is '"three"'
+argument 3 is "three"
++ echo argument 109 is '""'
+argument 109 is ""
+bash-4.4$ sh script5.sh one 2 three 4
+program was invoked by "script5.sh"
+there were 4 arguments given on the command line
+argument 1 is "one"
+argument 2 is "2"
+turning on "-x"
++ echo argument 3 is '"three"'
+argument 3 is "three"
++ echo argument 109 is '""'
+argument 109 is ""

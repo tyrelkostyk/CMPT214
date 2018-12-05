@@ -1,0 +1,9 @@
+bash-4.4$ ./script18.sh hundreds
+++ echo hundreds
+++ tr -d '\n'
+++ wc -c
++ NUM_CHAR=8
++ printf 'the first command-line argument had %d characters in it\n' 8
+the first command-line argument had 8 characters in it
++ exit
+bash-4.4$ 

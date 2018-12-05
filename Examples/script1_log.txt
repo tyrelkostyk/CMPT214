@@ -1,0 +1,24 @@
+# if script1.sh is executable, there are
+# three different ways to successfully invoke script1.sh
+bash-4.4$ chmod u+x script1.sh
+bash-4.4$ ls -l script1.sh
+-rwxr--r--  1 kusalik  faculty  49 26 Nov 18:40 script1.sh
+bash-4.4$ ./script1.sh
+hello world!
+bash-4.4$ sh script1.sh
+hello world!
+bash-4.4$ sh < script1.sh
+hello world!
+
+# if script1.sh is not executable, there are
+# two different ways to successfully invoke script1.sh
+bash-4.4$ chmod a-x script1.sh
+bash-4.4$ ls -l script1.sh
+-rwxr--r--  1 kusalik  faculty  49 26 Nov 18:40 script1.sh
+bash-4.4$ ./script1.sh
+bash: ./script1.sh: Permission denied
+bash-4.4$ sh ./script1.sh
+hello world!
+bash-4.4$ sh < ./script1.sh
+hello world!
+bash-4.4$ 

@@ -1,0 +1,25 @@
+# cases where expr should indicate that the argument to the
+# script was a non-zero integer
+bash-4.4$ ./script15.sh 5
+expr returned 0
+bash-4.4$ sh ./script15.sh -6
+expr returned 0
+
+# case where expr should indicate that the argument was zero
+bash-4.4$ sh script15.sh 0
+expr returned 1
+
+# cases where expr should indicate the argument was non-integer or non-zero 
+bash-4.4$ ./script15.sh foobar
+expr returned 2
+bash-4.4$ ./script15.sh 5.3
+expr returned 2
+bash-4.4$ ./script15.sh ""
+expr returned 2
+
+# let's consider this last case a little more closely by turning on
+# -x
+bash-4.4$ sh -x ./script15.sh ""
++ expr '' + 0
++ echo expr returned 2
+expr returned 2

@@ -1,0 +1,11 @@
+bash-4.4$ ./script20.sh < script7_cmds.txt
+there were 116 characters on stdin
+bash-4.4$ wc script7_cmds.txt
+       3      27     119 script7_cmds.txt
+bash-4.4$ sh -x ./script20.sh < script7_cmds.txt
+++ tr -d '\n'
+++ wc -c
++ /bin/echo there were 116 characters on stdin
+there were 116 characters on stdin
++ exit
+bash-4.4$ 

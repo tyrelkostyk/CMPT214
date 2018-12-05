@@ -1,0 +1,29 @@
+# on tuxworld
+bash-4.4$ ./script8.sh &
+[1] 21418
+bash-4.4$ this is script ./script8.sh with pid 21418
+now sleeping for 30 seconds
+pstree -p $$
+bash(19290)-+-pstree(21426)
+            `-script8.sh(21418)---sleep(21419)
+bash-4.4$ 
+
+# on MacOSX
+bash-3.2$ ./script8.sh &
+[1] 10955
+bash-3.2$ this is script ./script8.sh with pid 10955
+now sleeping for 30 seconds
+ps -O ppid
+  PID  PPID   TT  STAT      TIME COMMAND
+  387   386 s000  S+     0:00.25 -tcsh
+  435   434 s001  S+     0:00.09 -tcsh
+  470   469 s002  S+     0:00.10 -tcsh
+  476   475 s003  S+     0:00.31 -tcsh
+  543   542 s004  S      0:00.09 -tcsh
+ 1303   543 s004  S+     0:00.10 bash
+  584   583 s005  S      0:00.10 -tcsh
+10953   584 s005  S+     0:00.05 ssh tuxworld
+ 1404  1403 s007  S      0:00.72 -tcsh
+10954  1404 s007  S      0:00.01 bash
+10955 10954 s007  S      0:00.00 /bin/sh ./script8.sh
+10956 10955 s007  S      0:00.00 sleep 30

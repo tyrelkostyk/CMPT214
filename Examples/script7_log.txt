@@ -1,0 +1,15 @@
+bash-4.4$ set - one two three
+bash-4.4$ echo $#
+3
+bash-4.4$ echo $@
+one two three
+bash-4.4$ echo $1
+one
+bash-4.4$ shift
+bash-4.4$ echo $#
+2
+bash-4.4$ echo $@
+two three
+bash-4.4$ echo $1
+two
+bash-4.4$ 

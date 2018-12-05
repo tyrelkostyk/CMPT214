@@ -1,0 +1,40 @@
+# makefile for binary tree example
+# Author: Tony Kusalik
+
+# Adding rule for target 'clean'.
+
+all: bintree examples
+
+bintree: test.o traversal.o tree.o bintree.o
+	gcc test.o traversal.o tree.o bintree.o -o bintree
+
+tree.o: tree.c tree.h
+	gcc -Wall -Wextra -c tree.c
+
+traversal.o: traversal.c traversal.h tree.h
+	gcc -Wall -Wextra -c traversal.c
+
+test.o: test.c test.h tree.h traversal.h
+	gcc -Wall -Wextra -c test.c
+
+bintree.o: bintree.c test.h
+	gcc -Wall -Wextra -c bintree.c
+
+examples: example_80 example_82
+
+example_80: example_80.o
+	gcc example_80.o -o example_80
+
+example_82: example_82.o
+	gcc example_82.o -o example_82
+
+example_80.o: example_80.c
+	gcc -Wall -Wextra -c example_80.c
+
+example_82.o: example_82.c
+	gcc -Wall -Wextra -c example_82.c
+
+clean:
+	rm -f tree.o traversal.o test.o bintree.o
+	rm -f example_82.o example_80.o
+	rm -f bintree example_82 example_80
